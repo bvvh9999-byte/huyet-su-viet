@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://dhq1gj71053b8"]
+
+[ext_resource type="Script" uid="uid://1pbw2vbq6jqq" path="res://UI/game_over_screen.gd" id="1_50k4i"]
+
+[node name="GameOverScreen" type="CanvasLayer" unique_id=1024720887]
+process_mode = 3
+script = ExtResource("1_50k4i")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1690292935]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.05, 0.05, 0.05, 0.4862745)
+
+[node name="Label" type="Label" parent="ColorRect" unique_id=1851313865]
+layout_mode = 0
+offset_left = 433.0
+offset_top = 195.0
+offset_right = 796.0
+offset_bottom = 303.0
+text = "LỊCH SỬ ĐÃ BỊ XÓA SỔ"
+
+[node name="Button" type="Button" parent="ColorRect" unique_id=1712079063]
+layout_mode = 0
+offset_left = 217.0
+offset_top = 377.0
+offset_right = 417.0
+offset_bottom = 468.0
+text = "Hồi Sinh"
+
+[node name="Button2" type="Button" parent="ColorRect" unique_id=114988161]
+layout_mode = 0
+offset_left = 625.0
+offset_top = 379.0
+offset_right = 826.0
+offset_bottom = 469.0
+text = "Thoát"

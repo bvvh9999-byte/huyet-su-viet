@@ -6,7 +6,17 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iifgy"]
 size = Vector2(130, 131)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4gyqm"]
+bg_color = Color(0.6, 0, 0, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4gyqm"]
+radius = 253.07114
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qi2p4"]
+size = Vector2(183, 20)
+
 [node name="Enemy" type="CharacterBody2D" unique_id=2053603259]
+collision_layer = 2
 script = ExtResource("1_4gyqm")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1156274997]
@@ -16,3 +26,27 @@ texture = ExtResource("2_qi2p4")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1361683223]
 position = Vector2(-1, -1.5)
 shape = SubResource("RectangleShape2D_iifgy")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1350781569]
+offset_left = -91.0
+offset_top = -118.0
+offset_right = 91.0
+offset_bottom = -86.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_4gyqm")
+max_value = 30.0
+value = 30.0
+show_percentage = false
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=1760828098]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=1437407575]
+shape = SubResource("CircleShape2D_4gyqm")
+
+[node name="AttackArea" type="Area2D" parent="." unique_id=1359489663]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=784892454]
+position = Vector2(157.5, -1)
+shape = SubResource("RectangleShape2D_qi2p4")
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=2057787483]
+wait_time = 1.5
