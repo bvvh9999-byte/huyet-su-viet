@@ -1,17 +1,17 @@
 extends CanvasLayer
 
-func _on_button_pressed(): # NÚT HỒI SINH
-	# 1. Bơm lại đầy máu cho Player trong "Bộ não"
+func _ready():
+	# Đoạn code này ÉP toàn bộ màn hình này và TẤT CẢ các nút bên trong
+	# bắt buộc phải thức tỉnh, không bao giờ được phép Pause!
+	self.process_mode = Node.PROCESS_MODE_ALWAYS
+
+func _on_button_pressed(): # Nhớ xem tên hàm này có giống tên của bạn không nhé
+	print("=> NÚT HỒI SINH ĐÃ ĐƯỢC BẤM!") 
 	Global.player_hp = Global.max_hp
-	
-	# 2. Tiếp tục thời gian của game
 	get_tree().paused = false 
-	
-	# 3. Tải lại nguyên xi màn hình hiện tại (Reset game)
 	get_tree().reload_current_scene() 
-	
-	# 4. Xóa cái màn hình Game Over này đi
 	queue_free()
 
-func _on_button_2_pressed(): # NÚT THOÁT
-	get_tree().quit() # Tắt luôn game
+func _on_button_2_pressed(): # Nhớ xem tên hàm này có giống tên của bạn không nhé
+	print("=> NÚT THOÁT ĐÃ ĐƯỢC BẤM!")
+	get_tree().quit()

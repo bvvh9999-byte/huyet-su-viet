@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const SPEED = 200.0
-const JUMP_VELOCITY = -400.0
+const JUMP_VELOCITY = -800.0
 const DASH_SPEED = 600.0
 
 var is_dashing = false
@@ -124,3 +124,7 @@ func take_damage(amount):
 		
 		# 2. Dừng đọng thời gian toàn thế giới (Quái vật đứng im)
 		get_tree().paused = true
+
+
+func _on_portal_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.

@@ -12,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0.05, 0.05, 0.05, 0.4862745)
 
 [node name="Label" type="Label" parent="ColorRect" unique_id=1851313865]
@@ -23,6 +24,7 @@ offset_bottom = 303.0
 text = "LỊCH SỬ ĐÃ BỊ XÓA SỔ"
 
 [node name="Button" type="Button" parent="ColorRect" unique_id=1712079063]
+process_mode = 3
 layout_mode = 0
 offset_left = 217.0
 offset_top = 377.0
@@ -37,3 +39,5 @@ offset_top = 379.0
 offset_right = 826.0
 offset_bottom = 469.0
 text = "Thoát"
+
+[connection signal="pressed" from="ColorRect/Button" to="." method="_on_button_pressed"]
