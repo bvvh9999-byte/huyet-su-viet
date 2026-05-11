@@ -2,9 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://cup8chk8k2q1i" path="res://player.tscn" id="1_3m1hs"]
 [ext_resource type="PackedScene" uid="uid://bxb387vb2jg00" path="res://enemy.tscn" id="2_ia432"]
+[ext_resource type="PackedScene" uid="uid://c40504xanyv5j" path="res://npc.tscn" id="3_wdtk5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fj7yv"]
 size = Vector2(1507, 407.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ar73u"]
+size = Vector2(591, 92)
 
 [node name="World" type="Node2D" unique_id=1466733705]
 
@@ -21,8 +25,25 @@ offset_right = 1152.0
 offset_bottom = 408.0
 color = Color(0, 1, 0.73333335, 1)
 
-[node name="Player" parent="Ground" unique_id=562729849 instance=ExtResource("1_3m1hs")]
+[node name="Player" parent="." unique_id=562729849 instance=ExtResource("1_3m1hs")]
 position = Vector2(-226, -65)
 
-[node name="Enemy" parent="Ground" unique_id=2053603259 instance=ExtResource("2_ia432")]
+[node name="Enemy" parent="." unique_id=2053603259 instance=ExtResource("2_ia432")]
 position = Vector2(263, -67)
+
+[node name="Platform" type="StaticBody2D" parent="." unique_id=668247387]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform" unique_id=1700729164]
+position = Vector2(478.5, -285)
+shape = SubResource("RectangleShape2D_ar73u")
+one_way_collision = true
+
+[node name="ColorRect" type="ColorRect" parent="Platform/CollisionShape2D" unique_id=1770157138]
+offset_left = -295.5
+offset_top = -46.0
+offset_right = 295.5
+offset_bottom = 46.0
+color = Color(0.14117648, 0.35686275, 0.28235295, 1)
+
+[node name="NPC" parent="." unique_id=173165078 instance=ExtResource("3_wdtk5")]
+position = Vector2(607, -398)

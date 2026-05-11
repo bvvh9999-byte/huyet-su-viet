@@ -16,7 +16,7 @@ radius = 253.07114
 size = Vector2(183, 20)
 
 [node name="Enemy" type="CharacterBody2D" unique_id=2053603259]
-collision_layer = 2
+collision_layer = 4
 script = ExtResource("1_4gyqm")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1156274997]
@@ -38,11 +38,13 @@ value = 30.0
 show_percentage = false
 
 [node name="DetectionArea" type="Area2D" parent="." unique_id=1760828098]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=1437407575]
 shape = SubResource("CircleShape2D_4gyqm")
 
 [node name="AttackArea" type="Area2D" parent="." unique_id=1359489663]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=784892454]
 position = Vector2(157.5, -1)

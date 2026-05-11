@@ -10,6 +10,7 @@ size = Vector2(131, 129)
 size = Vector2(221, 20)
 
 [node name="Player" type="CharacterBody2D" unique_id=562729849]
+collision_layer = 2
 script = ExtResource("1_onrkg")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1055669959]
@@ -24,6 +25,7 @@ wait_time = 0.2
 one_shot = true
 
 [node name="SwordHitbox" type="Area2D" parent="." unique_id=38476732]
+collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SwordHitbox" unique_id=686420100]
