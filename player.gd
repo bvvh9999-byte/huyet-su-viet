@@ -14,6 +14,7 @@ var game_over_scene = preload("res://UI/game_over_screen.tscn")
 @onready var sword_hitbox = $SwordHitbox
 @onready var sword_visual = $SwordHitbox/ColorRect
 @onready var health_bar = $CanvasLayer/HealthBar
+@onready var exp_bar = $CanvasLayer/ExpBar
 
 func _ready():
 	dash_timer.timeout.connect(_on_dash_timer_timeout)
@@ -22,6 +23,9 @@ func _ready():
 	
 	health_bar.max_value = Global.max_hp
 	health_bar.value = Global.player_hp
+	
+	exp_bar.max_value = Global.max_exp
+	exp_bar.value = Global.player_exp
 
 func _physics_process(delta):
 	if is_dashing:
@@ -128,3 +132,29 @@ func take_damage(amount):
 
 func _on_portal_body_entered(body: Node2D) -> void:
 	pass # Replace with function body.
+# --- HÀM NHẬN KINH NGHIỆM ---
+func gain_exp(amount):
+	Global.player_exp += amount
+	print("=> Nhận được ", amount, " EXP! (Tổng: ", Global.player_exp, "/", Global.max_exp, ")")
+	
+	# Kiểm tra xem đã đủ để Lên cấp chưa?
+	if Global.player_exp >= Global.max_exp:
+		level_up()
+	
+	# Cập nhật thanh vàng trên màn hình
+	exp_bar.value = Global.player_exp
+
+# --- HÀM LÊN CẤP ---
+func level_up():
+	Global.player_level += 1
+	Global.player_exp = 0 # Reset EXP về 0
+	Global.max_exp += 50 # Cấp sau cần nhiều EXP hơn (150)
+	
+	# Tăng máu tối đa và Hồi đầy máu
+	Global.max_hp += 20
+	Global.player_hp = Global.max_hp
+	health_bar.max_value = Global.max_hp
+	health_bar.value = Global.player_hp
+	
+	exp_bar.max_value = Global.max_exp
+	print(">>> LEVEL UP!!! Cấp hiện tại: ", Global.player_level)

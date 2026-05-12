@@ -89,18 +89,21 @@ func _on_detection_exited(body):
 	if body.name == "Player":
 		player = null # Player chạy thoát khỏi radar
 
-# --- HÀM BỊ TRỪ MÁU CỦA PLAYER ---
-func take_damage(amount):
-	Global.player_hp -= amount
-	health_bar.value = Global.player_hp
+# --- HÀM TRỪ MÁU KHI BỊ CHÉM ---
+func take_damage(damage_amount):
+	hp -= damage_amount # Bị chém trừ máu
+	health_bar.value = hp # Cập nhật thanh máu trên đầu
 	
-	# --- THÊM DÒNG NÀY VÀO ĐỂ THEO DÕI ---
-	print("=> Ối! Player bị cắn! Máu gốc hiện tại còn: ", Global.player_hp)
-	# ------------------------------------
+	# Nháy đỏ
+	$Sprite2D.modulate = Color(1, 0, 0) 
+	await get_tree().create_timer(0.1).timeout 
+	$Sprite2D.modulate = Color(0.2, 0, 0.4) 
 	
-	sprite.modulate = Color(1, 0, 0)
-	await get_tree().create_timer(0.1).timeout
-	sprite.modulate = Color(1, 1, 1)
-	
-	if Global.player_hp <= 0:
-		queue_free()
+	# Nếu hết máu thì cho EXP rồi chết
+	if hp <= 0:
+		var player_node = get_tree().get_first_node_in_group("Player")
+		if player_node != null:
+			if player_node.has_method("gain_exp"):
+				player_node.gain_exp(50) # Cho 50 EXP
+				
+		queue_free() # Bốc hơi
