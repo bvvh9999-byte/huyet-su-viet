@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://cdpprrjf7bijh"]
+
+[ext_resource type="Script" uid="uid://fsh0afiw6bl1" path="res://Enemies/ranged_enemy.gd" id="1_klqil"]
+[ext_resource type="Texture2D" uid="uid://cok6rypfiw0aq" path="res://icon.svg" id="2_ius0x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iifgy"]
+size = Vector2(130, 131)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4gyqm"]
+bg_color = Color(0.6, 0, 0, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4gyqm"]
+radius = 357.2366
+
+[node name="RangedEnemy" type="CharacterBody2D" unique_id=2053603259]
+collision_layer = 4
+script = ExtResource("1_klqil")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1156274997]
+modulate = Color(0.68887454, 1.8770993e-06, 0.36690387, 1)
+texture = ExtResource("2_ius0x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1361683223]
+position = Vector2(-1, -1.5)
+shape = SubResource("RectangleShape2D_iifgy")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1350781569]
+offset_left = -91.0
+offset_top = -118.0
+offset_right = 91.0
+offset_bottom = -86.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_4gyqm")
+max_value = 30.0
+value = 30.0
+show_percentage = false
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=1760828098]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=1437407575]
+shape = SubResource("CircleShape2D_4gyqm")
+
+[node name="ShootTimer" type="Timer" parent="." unique_id=2057787483]
+wait_time = 2.0

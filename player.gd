@@ -1,13 +1,12 @@
 extends CharacterBody2D
 
-const SPEED = 200.0
-const JUMP_VELOCITY = -800.0
-const DASH_SPEED = 600.0
+@export var SPEED = 200.0
+@export var JUMP_VELOCITY = -800.0
+@export var DASH_SPEED = 600.0
 
 var is_dashing = false
 var is_attacking = false
 var facing_right = true
-var game_over_scene = preload("res://UI/game_over_screen.tscn")
 
 @onready var sprite = $Sprite2D
 @onready var dash_timer = $DashTimer
@@ -16,15 +15,21 @@ var game_over_scene = preload("res://UI/game_over_screen.tscn")
 @onready var health_bar = $CanvasLayer/HealthBar
 @onready var exp_bar = $CanvasLayer/ExpBar
 
+var game_over_scene = preload("res://UI/game_over_screen.tscn")
+
 func _ready():
+	# 1. TỰ ĐỘNG NỐI DÂY ĐIỆN CHO THANH KIẾM (Đảm bảo 100% không trượt)
+	sword_hitbox.body_entered.connect(_on_sword_hit_something)
 	dash_timer.timeout.connect(_on_dash_timer_timeout)
+	
+	# 2. Giấu kiếm khi mới vào game
 	sword_visual.visible = false
 	sword_hitbox.monitoring = false
 	
 	health_bar.max_value = Global.max_hp
 	health_bar.value = Global.player_hp
 	
-	exp_bar.max_value = Global.max_exp
+	exp_bar.max_value = Global.exp_to_next_level
 	exp_bar.value = Global.player_exp
 
 func _physics_process(delta):
@@ -35,6 +40,7 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
+	# Bấm chém
 	if Input.is_action_just_pressed("attack") and not is_attacking and is_on_floor():
 		attack()
 		return
@@ -44,13 +50,16 @@ func _physics_process(delta):
 		move_and_slide()
 		return
 
+	# Nhảy
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
+	# Lướt
 	if Input.is_action_just_pressed("dash") and is_on_floor():
 		start_dash()
 		return
 
+	# Di chuyển
 	var direction = Input.get_axis("move_left", "move_right")
 	if direction:
 		velocity.x = direction * SPEED
@@ -67,38 +76,33 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-# --- HÀM CHÉM ---
+# ==========================================
+# CƠ CHẾ CHÉM ĐÍCH THỰC (KHÔNG THỂ TRƯỢT)
+# ==========================================
 func attack():
 	is_attacking = true
-	sword_hitbox.monitoring = true
+	# Bật thanh kiếm lên (Lúc này hàm _on_sword_hit_something sẽ tự động kích hoạt nếu chạm)
 	sword_visual.visible = true
+	sword_hitbox.monitoring = true 
 	
-	await get_tree().physics_frame
-	
-	var bodies = sword_hitbox.get_overlapping_bodies()
-	print("\n--- BẮT ĐẦU VUNG KIẾM ---")
-	print("Thanh kiếm chạm vào: ", bodies.size(), " vật thể")
-	
-	for body in bodies:
-		print("1. Tên vật thể bị chạm: ", body.name)
-		print("2. Các nhóm của nó là: ", body.get_groups())
-		print("3. Nó có não (code) chứa hàm take_damage không?: ", body.has_method("take_damage"))
-		
-		if body.is_in_group("Enemy"):
-			if body.has_method("take_damage"):
-				body.take_damage(10)
-				print("=> KẾT LUẬN: ĐÃ CHÉM TRÚNG VÀ TRỪ MÁU!")
-			else:
-				print("=> LỖI: Thuộc nhóm Enemy nhưng KHÔNG TÌM THẤY hàm trừ máu!")
-		else:
-			print("=> LỖI: Vật bị chạm KHÔNG CÓ nhãn Enemy!")
-
+	# Đợi 0.2s cho xong nhát chém
 	await get_tree().create_timer(0.2).timeout
+	
+	# Tắt kiếm
 	sword_hitbox.monitoring = false
 	sword_visual.visible = false
 	is_attacking = false
 
-# --- HÀM LƯỚT ---
+# HÀM TỰ ĐỘNG KÍCH HOẠT KHI KIẾM QUẸT TRÚNG AI ĐÓ
+func _on_sword_hit_something(body):
+	# Nếu vật bị quẹt có hàm trừ máu VÀ không phải là chính mình
+	if body.has_method("take_damage") and body != self:
+		body.take_damage(10)
+		print("=> ĐÃ CHÉM TRÚNG: ", body.name)
+
+# ==========================================
+# CÁC KỸ NĂNG KHÁC
+# ==========================================
 func start_dash():
 	is_dashing = true
 	velocity.y = 0
@@ -111,7 +115,6 @@ func start_dash():
 func _on_dash_timer_timeout():
 	is_dashing = false
 
-# --- HÀM BỊ TRỪ MÁU CỦA PLAYER ---
 func take_damage(amount):
 	Global.player_hp -= amount
 	health_bar.value = Global.player_hp
@@ -120,41 +123,30 @@ func take_damage(amount):
 	await get_tree().create_timer(0.1).timeout
 	sprite.modulate = Color(1, 1, 1)
 	
-	# NẾU HẾT MÁU -> GAME OVER
 	if Global.player_hp <= 0:
-		# 1. Tạo ra màn hình Game Over
-		var game_over = game_over_scene.instantiate()
-		get_tree().root.add_child(game_over) # Gắn nó vào màn hình
-		
-		# 2. Dừng đọng thời gian toàn thế giới (Quái vật đứng im)
-		get_tree().paused = true
+		if game_over_scene:
+			var game_over = game_over_scene.instantiate()
+			get_tree().root.add_child(game_over)
+			get_tree().paused = true
 
-
-func _on_portal_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.
-# --- HÀM NHẬN KINH NGHIỆM ---
+# --- HÀM NHẬN KINH NGHIỆM KHI GIẾT QUÁI ---
 func gain_exp(amount):
 	Global.player_exp += amount
-	print("=> Nhận được ", amount, " EXP! (Tổng: ", Global.player_exp, "/", Global.max_exp, ")")
 	
-	# Kiểm tra xem đã đủ để Lên cấp chưa?
-	if Global.player_exp >= Global.max_exp:
-		level_up()
-	
-	# Cập nhật thanh vàng trên màn hình
-	exp_bar.value = Global.player_exp
+	# Nếu lượng EXP vượt mốc yêu cầu -> LÊN CẤP!
+	if Global.player_exp >= Global.exp_to_next_level:
+		Global.player_level += 1
+		Global.player_exp -= Global.exp_to_next_level # Giữ lại phần dư
+		Global.exp_to_next_level += 50 # Cấp sau cần nhiều EXP hơn (150, 200...)
+		
+		# Hiệu ứng lên cấp: Hồi đầy máu và nháy chớp màu Vàng
+		Global.player_hp = Global.max_hp
+		health_bar.value = Global.player_hp
+		sprite.modulate = Color(1, 1, 0) # Nháy vàng
+		print("=> LEVEL UP! ĐÃ ĐẠT CẤP ĐỘ: ", Global.player_level)
+		await get_tree().create_timer(0.3).timeout
+		sprite.modulate = Color(1, 1, 1)
 
-# --- HÀM LÊN CẤP ---
-func level_up():
-	Global.player_level += 1
-	Global.player_exp = 0 # Reset EXP về 0
-	Global.max_exp += 50 # Cấp sau cần nhiều EXP hơn (150)
-	
-	# Tăng máu tối đa và Hồi đầy máu
-	Global.max_hp += 20
-	Global.player_hp = Global.max_hp
-	health_bar.max_value = Global.max_hp
-	health_bar.value = Global.player_hp
-	
-	exp_bar.max_value = Global.max_exp
-	print(">>> LEVEL UP!!! Cấp hiện tại: ", Global.player_level)
+	# Cập nhật lại thanh EXP hiển thị trên màn hình
+	exp_bar.max_value = Global.exp_to_next_level
+	exp_bar.value = Global.player_exp

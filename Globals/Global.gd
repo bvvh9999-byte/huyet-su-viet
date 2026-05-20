@@ -5,7 +5,7 @@ var player_hp = 100
 var max_hp = 100
 var player_level = 1
 var player_exp = 0
-var max_exp = 100 # Cần 100 điểm để lên cấp 2
+var exp_to_next_level = 100
 
 # Trạng thái Unlock Kỹ năng từ các Anh hùng
 var unlocked_song_kiem = false # Nhận từ Hai Bà Trưng (Chap 1)

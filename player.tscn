@@ -29,7 +29,7 @@ one_shot = true
 
 [node name="SwordHitbox" type="Area2D" parent="." unique_id=38476732]
 collision_layer = 4
-collision_mask = 2
+collision_mask = 255
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SwordHitbox" unique_id=686420100]
 position = Vector2(176, 0)

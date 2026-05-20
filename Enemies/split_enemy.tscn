@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://bxb387vb2jg00"]
+[gd_scene format=3 uid="uid://cesenweeqc6b6"]
 
-[ext_resource type="Script" uid="uid://c310rxgseynmu" path="res://enemy.gd" id="1_4gyqm"]
-[ext_resource type="Texture2D" uid="uid://cok6rypfiw0aq" path="res://icon.svg" id="2_qi2p4"]
+[ext_resource type="Script" uid="uid://blby7jkjrmr0q" path="res://Enemies/split_enemy.gd" id="1_ava1s"]
+[ext_resource type="Texture2D" uid="uid://cok6rypfiw0aq" path="res://icon.svg" id="2_p1cvx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iifgy"]
 size = Vector2(130, 131)
@@ -15,13 +15,14 @@ radius = 253.07114
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qi2p4"]
 size = Vector2(183, 20)
 
-[node name="Enemy" type="CharacterBody2D" unique_id=2053603259]
+[node name="SplitEnemy" type="CharacterBody2D" unique_id=2053603259]
+scale = Vector2(1.5, 1.5)
 collision_layer = 4
-script = ExtResource("1_4gyqm")
+script = ExtResource("1_ava1s")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1156274997]
 modulate = Color(0.05, 0.05, 0.05, 1)
-texture = ExtResource("2_qi2p4")
+texture = ExtResource("2_p1cvx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1361683223]
 position = Vector2(-1, -1.5)
