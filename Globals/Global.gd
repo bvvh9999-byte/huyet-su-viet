@@ -1,16 +1,31 @@
 extends Node
 
-var current_chapter = 1
+# --- CHỈ SỐ PLAYER ---
 var player_hp = 100
 var max_hp = 100
 var player_level = 1
 var player_exp = 0
 var exp_to_next_level = 100
+var bonus_damage = 0
+var toc_do = 200
 
-# Trạng thái Unlock Kỹ năng từ các Anh hùng
-var unlocked_song_kiem = false # Nhận từ Hai Bà Trưng (Chap 1)
-var unlocked_thuy_kich = false # Nhận từ Ngô Quyền (Chap 2)
-var unlocked_hao_khi = false   # Nhận từ Trần Hưng Đạo (Chap 3)
+# --- KHO ĐỒ ---
+var kho_vu_khi = ["Kiếm Gỗ Tầm Sét", "Gươm Rỉ Sét"] 
+var kho_vat_pham = ["Bình Máu Nhỏ", "Lá Bùa Hồi Sinh"]
 
-# Lịch sử có bị Bóng Đen xóa sổ không
-var history_saved = false
+var trang_bi_vu_khi = "Chưa có"
+var trang_bi_ao_giap = "Chưa có"
+var trang_bi_day_chuyen = "Chưa có"
+
+# --- CUỐN SỔ NHIỆM VỤ ---
+# Trạng thái: 0 (Chưa nhận), 1 (Đang làm), 2 (Đã xong)
+var danh_sach_nhiem_vu = {
+	"main_01": {
+		"ten": "Khởi Nghĩa",
+		"loai": "Nhiệm Vụ Chính",
+		"trang_thai": 0, 
+		"muc_tieu": 3, # Cần giết 3 con quái
+		"da_lam": 0,
+		"phan_thuong": "Song Kiếm"
+	}
+}

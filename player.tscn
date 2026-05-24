@@ -60,3 +60,11 @@ offset_right = 316.0
 offset_bottom = 87.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_onrkg")
 show_percentage = false
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1581948688]
+offset_left = 2.0
+offset_top = 98.0
+offset_right = 342.0
+offset_bottom = 320.0
+theme_override_colors/font_color = Color(0.04762236, 0.34506145, 0.605284, 1)
+text = "ĐANG TEST NHIỆM VỤ"

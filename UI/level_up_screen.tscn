@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://2txrdva82ptu"]
+
+[ext_resource type="Script" uid="uid://c4r5n8u6f3epp" path="res://UI/level_up_screen.gd" id="1_4wurp"]
+
+[node name="LevelUpScreen" type="CanvasLayer" unique_id=1685285447]
+process_mode = 3
+script = ExtResource("1_4wurp")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1973537559]
+offset_right = 1153.0
+offset_bottom = 649.0
+color = Color(0, 0, 0, 0.3137255)
+
+[node name="Label" type="Label" parent="ColorRect" unique_id=1584437787]
+layout_mode = 0
+offset_left = 420.0
+offset_top = 119.0
+offset_right = 734.0
+offset_bottom = 142.0
+text = "CHÚC MỪNG LÊN CẤP! CHỌN 1 KỸ NĂNG"
+
+[node name="Button" type="Button" parent="ColorRect" unique_id=878783366]
+layout_mode = 0
+offset_left = 174.0
+offset_top = 214.0
+offset_right = 494.0
+offset_bottom = 319.0
+text = "+10 SÁT THƯƠNG KIẾM"
+
+[node name="Button2" type="Button" parent="ColorRect" unique_id=263665185]
+layout_mode = 0
+offset_left = 634.0
+offset_top = 219.0
+offset_right = 948.0
+offset_bottom = 317.0
+text = "+50 MÁU TỐI ĐA"
+
+[connection signal="pressed" from="ColorRect/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="ColorRect/Button2" to="." method="_on_button_2_pressed"]

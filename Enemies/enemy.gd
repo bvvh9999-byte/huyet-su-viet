@@ -92,4 +92,13 @@ func take_damage(damage_amount):
 		if player_node and player_node.has_method("gain_exp"):
 			player_node.gain_exp(50) # Cho 50 EXP (Giết 2 con là lên cấp 2)
 			
+		# --- GÓC BÁO CÁO NHIỆM VỤ ---
+		if Global.danh_sach_nhiem_vu.has("main_01"):
+			var nv = Global.danh_sach_nhiem_vu["main_01"]
+			
+			# Nếu Player đang làm nhiệm vụ VÀ chưa giết đủ số lượng
+			if nv["trang_thai"] == 1 and nv["da_lam"] < nv["muc_tieu"]:
+				nv["da_lam"] += 1 # Cộng 1 vào sổ tay!
+				print("=> ĐÃ GIẾT 1 QUÁI! Tiến độ nhiệm vụ: ", nv["da_lam"], "/", nv["muc_tieu"])
+		# ----------------------------
 		queue_free()
