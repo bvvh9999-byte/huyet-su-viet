@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://bfirimj8x2pmq" path="res://portal.gd" id="3_fo5ed"]
 [ext_resource type="PackedScene" uid="uid://cesenweeqc6b6" path="res://Enemies/split_enemy.tscn" id="4_8j60k"]
 [ext_resource type="PackedScene" uid="uid://cdpprrjf7bijh" path="res://Enemies/ranged_enemy.tscn" id="5_fo5ed"]
+[ext_resource type="PackedScene" uid="uid://c40504xanyv5j" path="res://Characters/npc.tscn" id="6_5ukr8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fj7yv"]
 size = Vector2(4397, 407.5)
@@ -93,5 +94,8 @@ position = Vector2(432, -103)
 
 [node name="RangedEnemy" parent="." unique_id=1965693738 instance=ExtResource("5_fo5ed")]
 position = Vector2(-491, -537)
+
+[node name="NPC" parent="." unique_id=173165078 instance=ExtResource("6_5ukr8")]
+position = Vector2(-2122, -335)
 
 [connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]

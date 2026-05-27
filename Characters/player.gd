@@ -4,7 +4,7 @@ extends CharacterBody2D
 # THÔNG SỐ CƠ BẢN
 # ==========================================
 @export var SPEED = 200.0
-@export var JUMP_VELOCITY = -400.0
+@export var JUMP_VELOCITY = -800.0
 @export var DASH_SPEED = 600.0
 
 var is_dashing = false
@@ -136,7 +136,7 @@ func attack():
 	sword_visual.visible = false
 	is_attacking = false
 
-# 👉 ĐÃ SỬA CẢNH BÁO MÀU VÀNG Ở ĐÂY (Thêm dấu _)
+# 👉 CHÍNH LÀ CHỖ NÀY: Đã thêm dấu _ vào trước chữ body để xóa lỗi màu vàng!
 func _on_sword_hit_something(_body):
 	pass
 
