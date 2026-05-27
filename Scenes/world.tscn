@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dypa0p6hxq8in"]
 
-[ext_resource type="PackedScene" uid="uid://cup8chk8k2q1i" path="res://player.tscn" id="1_5a7ea"]
+[ext_resource type="PackedScene" uid="uid://cup8chk8k2q1i" path="res://Characters/player.tscn" id="1_5a7ea"]
 [ext_resource type="PackedScene" uid="uid://bxb387vb2jg00" path="res://Enemies/enemy.tscn" id="2_8j60k"]
 [ext_resource type="Script" uid="uid://bfirimj8x2pmq" path="res://portal.gd" id="3_fo5ed"]
 [ext_resource type="PackedScene" uid="uid://cesenweeqc6b6" path="res://Enemies/split_enemy.tscn" id="4_8j60k"]

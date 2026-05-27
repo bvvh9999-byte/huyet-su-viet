@@ -73,6 +73,8 @@ func _on_vũ_khí_item_activated(index):
 		Global.bonus_damage = 5
 	elif ten_vu_khi_moi == "Gươm Rỉ Sét":
 		Global.bonus_damage = 15
+	elif ten_vu_khi_moi == "Huyết Kiếm": # Quà của NPC
+		Global.bonus_damage = 30
 		
 	# Tải lại toàn bộ giao diện để thấy sự thay đổi ngay lập tức
 	cap_nhat_giao_dien()

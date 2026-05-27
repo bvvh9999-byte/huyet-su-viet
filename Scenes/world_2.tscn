@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://w8pxjnkv06yw"]
 
-[ext_resource type="PackedScene" uid="uid://cup8chk8k2q1i" path="res://player.tscn" id="1_3m1hs"]
+[ext_resource type="PackedScene" uid="uid://cup8chk8k2q1i" path="res://Characters/player.tscn" id="1_3m1hs"]
 [ext_resource type="PackedScene" uid="uid://bxb387vb2jg00" path="res://Enemies/enemy.tscn" id="2_ia432"]
-[ext_resource type="PackedScene" uid="uid://c40504xanyv5j" path="res://npc.tscn" id="3_wdtk5"]
+[ext_resource type="PackedScene" uid="uid://c40504xanyv5j" path="res://Characters/npc.tscn" id="3_wdtk5"]
 [ext_resource type="PackedScene" uid="uid://cdpprrjf7bijh" path="res://Enemies/ranged_enemy.tscn" id="4_bvv5j"]
+[ext_resource type="PackedScene" uid="uid://u1s0g2pq0sgj" path="res://Props/spike_trap.tscn" id="5_w60u7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fj7yv"]
 size = Vector2(3737, 407.5)
@@ -79,3 +80,6 @@ color = Color(0.14117648, 0.35686275, 0.28235295, 1)
 
 [node name="RangedEnemy" parent="." unique_id=953915621 instance=ExtResource("4_bvv5j")]
 position = Vector2(308, -433)
+
+[node name="SpikeTrap" parent="." unique_id=495765900 instance=ExtResource("5_w60u7")]
+position = Vector2(500, -29)

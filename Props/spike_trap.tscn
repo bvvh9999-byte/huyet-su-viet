@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://u1s0g2pq0sgj"]
+
+[ext_resource type="Script" uid="uid://by8mup4ggmv8q" path="res://Props/spike_trap.gd" id="1_43npg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3vgcn"]
+size = Vector2(453, 29)
+
+[node name="SpikeTrap" type="Area2D" unique_id=495765900]
+collision_layer = 0
+collision_mask = 6
+script = ExtResource("1_43npg")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=805246917]
+offset_right = 454.0
+offset_bottom = 28.0
+color = Color(0.42961916, 7.70092e-07, 3.6098064e-07, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1583805923]
+position = Vector2(227.5, 12.5)
+shape = SubResource("RectangleShape2D_3vgcn")

@@ -1,29 +1,38 @@
 extends CharacterBody2D
 
+# ==========================================
+# THÔNG SỐ CƠ BẢN
+# ==========================================
 @export var SPEED = 200.0
-@export var JUMP_VELOCITY = -800.0
+@export var JUMP_VELOCITY = -400.0
 @export var DASH_SPEED = 600.0
 
 var is_dashing = false
 var is_attacking = false
 var facing_right = true
 
+# ==========================================
+# KẾT NỐI GIAO DIỆN (UI) VÀ NODE
+# ==========================================
 @onready var sprite = $Sprite2D
 @onready var dash_timer = $DashTimer
 @onready var sword_hitbox = $SwordHitbox
 @onready var sword_visual = $SwordHitbox/ColorRect
 
-# --- KẾT NỐI VỚI GIAO DIỆN TRÊN MÀN HÌNH ---
+# HUD trên màn hình
 @onready var health_bar = $CanvasLayer/HealthBar
 @onready var exp_bar = $CanvasLayer/ExpBar
-@onready var quest_tracker = $CanvasLayer/QuestTracker # Dòng chữ màu vàng theo dõi nhiệm vụ
+@onready var quest_tracker = $CanvasLayer/QuestTracker 
 
+# Tải sẵn các màn hình 
 var game_over_scene = preload("res://UI/game_over_screen.tscn")
 var level_up_scene = preload("res://UI/level_up_screen.tscn")
 var profile_scene = preload("res://UI/profile_screen.tscn")
 var profile_instance = null 
 
 func _ready():
+	self.process_mode = Node.PROCESS_MODE_ALWAYS
+	
 	sword_hitbox.body_entered.connect(_on_sword_hit_something)
 	dash_timer.timeout.connect(_on_dash_timer_timeout)
 	
@@ -32,35 +41,33 @@ func _ready():
 	
 	health_bar.max_value = Global.max_hp
 	health_bar.value = Global.player_hp
+	
 	if exp_bar != null:
 		exp_bar.max_value = Global.exp_to_next_level
 		exp_bar.value = Global.player_exp
 
-func _physics_process(delta):
-	# MỞ TÚI ĐỒ BẰNG PHÍM MẶC ĐỊNH
-	if Input.is_action_just_pressed("open_profile"):
+# ==========================================
+# HÀM BẮT BÀN PHÍM CHÍNH (MIỄN NHIỄM PAUSE)
+# ==========================================
+func _unhandled_input(event):
+	if event.is_action_pressed("open_profile"):
 		if profile_instance == null:
 			if profile_scene:
 				profile_instance = profile_scene.instantiate()
 				get_tree().root.add_child(profile_instance)
-				get_tree().paused = true
+				get_tree().paused = true 
 		else:
 			profile_instance.queue_free()
 			profile_instance = null
-			get_tree().paused = false
+			get_tree().paused = false 
+
+# ==========================================
+# HỆ THỐNG VẬT LÝ VÀ CHẠY NHẢY 
+# ==========================================
+func _physics_process(delta):
+	if get_tree().paused:
 		return 
-
-	# --- HIỂN THỊ CHỮ NHIỆM VỤ LÊN MÀN HÌNH ---
-	if quest_tracker != null:
-		var hien_thi_chu = ""
-		for ma_nv in Global.danh_sach_nhiem_vu:
-			var nv = Global.danh_sach_nhiem_vu[ma_nv]
-			# Chỉ hiện nếu người chơi ĐANG LÀM (Trạng thái = 1)
-			if nv["trang_thai"] == 1:
-				hien_thi_chu += "Nhiệm vụ: " + nv["ten"] + " [" + str(nv["da_lam"]) + "/" + str(nv["muc_tieu"]) + "]\n"
-		quest_tracker.text = hien_thi_chu
-	# ----------------------------------------
-
+		
 	if is_dashing:
 		move_and_slide()
 		return
@@ -99,21 +106,39 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+	
+	if quest_tracker != null:
+		var hien_thi_chu = ""
+		for ma_nv in Global.danh_sach_nhiem_vu:
+			var nv = Global.danh_sach_nhiem_vu[ma_nv]
+			if nv["trang_thai"] == 1:
+				hien_thi_chu += "- " + nv["ten"] + " [" + str(nv["da_lam"]) + "/" + str(nv["muc_tieu"]) + "]\n"
+		quest_tracker.text = hien_thi_chu
 
-# --- CHIẾN ĐẤU ---
+# ==========================================
+# CHIẾN ĐẤU VÀ KỸ NĂNG
+# ==========================================
 func attack():
 	is_attacking = true
 	sword_visual.visible = true
 	sword_hitbox.monitoring = true 
+	
+	await get_tree().physics_frame
+	
+	var bodies = sword_hitbox.get_overlapping_bodies()
+	for body in bodies:
+		if body.has_method("take_damage") and body != self:
+			var tong_sat_thuong = 10 + Global.bonus_damage 
+			body.take_damage(tong_sat_thuong)
+			
 	await get_tree().create_timer(0.2).timeout
 	sword_hitbox.monitoring = false
 	sword_visual.visible = false
 	is_attacking = false
 
-func _on_sword_hit_something(body):
-	if body.has_method("take_damage") and body != self:
-		var tong_sat_thuong = 10 + Global.bonus_damage 
-		body.take_damage(tong_sat_thuong)
+# 👉 ĐÃ SỬA CẢNH BÁO MÀU VÀNG Ở ĐÂY (Thêm dấu _)
+func _on_sword_hit_something(_body):
+	pass
 
 func start_dash():
 	is_dashing = true
@@ -125,10 +150,13 @@ func start_dash():
 func _on_dash_timer_timeout():
 	is_dashing = false
 
-# --- BỊ THƯƠNG & LÊN CẤP ---
+# ==========================================
+# CHỊU SÁT THƯƠNG VÀ LÊN CẤP
+# ==========================================
 func take_damage(amount):
 	Global.player_hp -= amount
 	health_bar.value = Global.player_hp
+	
 	sprite.modulate = Color(1, 0, 0)
 	await get_tree().create_timer(0.1).timeout
 	sprite.modulate = Color(1, 1, 1)
@@ -141,10 +169,12 @@ func take_damage(amount):
 
 func gain_exp(amount):
 	Global.player_exp += amount
+	
 	if Global.player_exp >= Global.exp_to_next_level:
 		Global.player_level += 1
 		Global.player_exp -= Global.exp_to_next_level 
 		Global.exp_to_next_level += 50 
+		
 		if level_up_scene:
 			var lvl_up = level_up_scene.instantiate()
 			get_tree().root.add_child(lvl_up)
