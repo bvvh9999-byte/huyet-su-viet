@@ -6,9 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://cesenweeqc6b6" path="res://Enemies/split_enemy.tscn" id="4_8j60k"]
 [ext_resource type="PackedScene" uid="uid://cdpprrjf7bijh" path="res://Enemies/ranged_enemy.tscn" id="5_fo5ed"]
 [ext_resource type="PackedScene" uid="uid://c40504xanyv5j" path="res://Characters/npc.tscn" id="6_5ukr8"]
+[ext_resource type="PackedScene" uid="uid://b2iahd1vr8ybe" path="res://Props/chest.tscn" id="7_o06y3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fj7yv"]
-size = Vector2(4397, 407.5)
+size = Vector2(4397, 205.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqk2v"]
 size = Vector2(72.5, 1016.5)
@@ -21,21 +22,20 @@ size = Vector2(584, 70)
 [node name="Ground" type="StaticBody2D" parent="." unique_id=105521894]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=1900657024]
-position = Vector2(-1045.5, 203)
+position = Vector2(-1045.5, 102.125)
 shape = SubResource("RectangleShape2D_fj7yv")
 
 [node name="ColorRect" type="ColorRect" parent="Ground" unique_id=2077049050]
 offset_left = -3244.0
 offset_top = 5.0
 offset_right = 1164.0
-offset_bottom = 412.0
+offset_bottom = 197.0
 color = Color(0, 1, 0, 1)
 
 [node name="Portal" type="Area2D" parent="." unique_id=1504582397]
 collision_layer = 0
 collision_mask = 255
 script = ExtResource("3_fo5ed")
-next_scene_path = "uid://w8pxjnkv06yw"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Portal" unique_id=1938447980]
 position = Vector2(1115.75, -102.25)
@@ -98,4 +98,5 @@ position = Vector2(-491, -537)
 [node name="NPC" parent="." unique_id=173165078 instance=ExtResource("6_5ukr8")]
 position = Vector2(-2122, -335)
 
-[connection signal="body_entered" from="Portal" to="Portal" method="_on_body_entered"]
+[node name="Chest" parent="." unique_id=831733411 instance=ExtResource("7_o06y3")]
+position = Vector2(-289, -590)

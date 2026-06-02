@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://e6ov5vmpx5t1"]
+
+[ext_resource type="PackedScene" uid="uid://cup8chk8k2q1i" path="res://Characters/player.tscn" id="1_y766s"]
+[ext_resource type="PackedScene" uid="uid://vl2ch2ivwnxu" path="res://Enemies/boss.tscn" id="2_vat2a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vat2a"]
+size = Vector2(5681, 259)
+
+[node name="BossWorld" type="Node2D" unique_id=830292293]
+process_mode = 3
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=652464899]
+color = Color(0.20152658, 0.20152658, 0.20152652, 1)
+
+[node name="Ground" type="StaticBody2D" parent="." unique_id=1703786219]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=2044846364]
+position = Vector2(1176.5, 134)
+shape = SubResource("RectangleShape2D_vat2a")
+
+[node name="ColorRect" type="ColorRect" parent="Ground" unique_id=88268261]
+offset_left = -1675.0
+offset_right = 4016.0
+offset_bottom = 262.0
+color = Color(0.913231, 0.4501739, 0, 1)
+
+[node name="Player" parent="Ground" unique_id=562729849 instance=ExtResource("1_y766s")]
+position = Vector2(11, -64)
+
+[node name="Boss" parent="Ground" unique_id=1163727577 instance=ExtResource("2_vat2a")]
+position = Vector2(473, -101)
+
+[node name="UILayer" type="CanvasLayer" parent="." unique_id=522345630]
+
+[node name="DialogBox" type="ColorRect" parent="UILayer" unique_id=752211590]
+offset_left = 770.0
+offset_top = 61.0
+offset_right = 1144.0
+offset_bottom = 101.0
+color = Color(0, 0, 0, 0.4627451)
+
+[node name="Label" type="Label" parent="UILayer/DialogBox" unique_id=454210761]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Boss đang nói chuyện..."

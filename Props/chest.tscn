@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://b2iahd1vr8ybe"]
+
+[ext_resource type="Script" uid="uid://c851im14iupy8" path="res://Props/chest.gd" id="1_fxsxq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2wljv"]
+size = Vector2(206, 112)
+
+[node name="Chest" type="Area2D" unique_id=831733411]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_fxsxq")
+hidden_map_path = "uid://dhlrs7yg1k523"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=82619099]
+offset_right = 205.0
+offset_bottom = 112.0
+color = Color(0.99, 0.84150004, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=293142352]
+position = Vector2(104, 56)
+shape = SubResource("RectangleShape2D_2wljv")
+
+[node name="Label" type="Label" parent="." unique_id=456206189]
+visible = false
+offset_left = 51.0
+offset_top = -40.0
+offset_right = 152.0
+offset_bottom = -17.0
+text = "[E] Mở rương"

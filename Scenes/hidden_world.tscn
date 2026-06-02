@@ -1,38 +1,35 @@
-[gd_scene format=3 uid="uid://w8pxjnkv06yw"]
+[gd_scene format=3 uid="uid://dhlrs7yg1k523"]
 
-[ext_resource type="PackedScene" uid="uid://cup8chk8k2q1i" path="res://Characters/player.tscn" id="1_3m1hs"]
-[ext_resource type="PackedScene" uid="uid://bxb387vb2jg00" path="res://Enemies/enemy.tscn" id="2_ia432"]
-[ext_resource type="PackedScene" uid="uid://c40504xanyv5j" path="res://Characters/npc.tscn" id="3_wdtk5"]
-[ext_resource type="PackedScene" uid="uid://cdpprrjf7bijh" path="res://Enemies/ranged_enemy.tscn" id="4_bvv5j"]
-[ext_resource type="PackedScene" uid="uid://u1s0g2pq0sgj" path="res://Props/spike_trap.tscn" id="5_w60u7"]
-[ext_resource type="PackedScene" uid="uid://b2iahd1vr8ybe" path="res://Props/chest.tscn" id="6_4i21e"]
+[ext_resource type="PackedScene" uid="uid://cup8chk8k2q1i" path="res://Characters/player.tscn" id="1_ktidu"]
+[ext_resource type="PackedScene" uid="uid://bxb387vb2jg00" path="res://Enemies/enemy.tscn" id="2_rcsqj"]
+[ext_resource type="PackedScene" uid="uid://cdpprrjf7bijh" path="res://Enemies/ranged_enemy.tscn" id="4_7dpff"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fj7yv"]
-size = Vector2(3737, 142.75)
+size = Vector2(3737, 407.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ar73u"]
 size = Vector2(589.875, 92)
 
 [node name="World" type="Node2D" unique_id=1466733705]
-position = Vector2(-1, 0)
+position = Vector2(-2, 0)
 
 [node name="Ground" type="StaticBody2D" parent="." unique_id=105521894]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=1900657024]
-position = Vector2(-714.5, 70.625)
+position = Vector2(-714.5, 203)
 shape = SubResource("RectangleShape2D_fj7yv")
 
 [node name="ColorRect" type="ColorRect" parent="Ground" unique_id=2077049050]
-offset_left = -2593.0
+offset_left = -2591.0
 offset_top = 1.0
-offset_right = 1152.0
-offset_bottom = 153.0
-color = Color(0, 1, 0.73333335, 1)
+offset_right = 1145.0
+offset_bottom = 408.0
+color = Color(0, 0, 0, 1)
 
-[node name="Player" parent="." unique_id=562729849 instance=ExtResource("1_3m1hs")]
-position = Vector2(-1967, -68)
+[node name="Player" parent="." unique_id=562729849 instance=ExtResource("1_ktidu")]
+position = Vector2(-2551, -68)
 
-[node name="Enemy" parent="." unique_id=2053603259 instance=ExtResource("2_ia432")]
+[node name="Enemy" parent="." unique_id=2053603259 instance=ExtResource("2_rcsqj")]
 position = Vector2(-293, -61)
 
 [node name="Platform" type="StaticBody2D" parent="." unique_id=668247387]
@@ -48,9 +45,6 @@ offset_top = -46.0
 offset_right = 295.5
 offset_bottom = 46.0
 color = Color(0.14117648, 0.35686275, 0.28235295, 1)
-
-[node name="NPC" parent="." unique_id=173165078 instance=ExtResource("3_wdtk5")]
-position = Vector2(-1260, -393)
 
 [node name="Platform2" type="StaticBody2D" parent="." unique_id=574424364]
 
@@ -80,11 +74,5 @@ offset_right = 295.5
 offset_bottom = 46.0
 color = Color(0.14117648, 0.35686275, 0.28235295, 1)
 
-[node name="RangedEnemy" parent="." unique_id=953915621 instance=ExtResource("4_bvv5j")]
+[node name="RangedEnemy" parent="." unique_id=953915621 instance=ExtResource("4_7dpff")]
 position = Vector2(308, -433)
-
-[node name="SpikeTrap" parent="." unique_id=495765900 instance=ExtResource("5_w60u7")]
-position = Vector2(500, -29)
-
-[node name="Chest" parent="." unique_id=831733411 instance=ExtResource("6_4i21e")]
-position = Vector2(-876, -578)

@@ -33,7 +33,6 @@ var profile_instance = null
 func _ready():
 	self.process_mode = Node.PROCESS_MODE_ALWAYS
 	
-	sword_hitbox.body_entered.connect(_on_sword_hit_something)
 	dash_timer.timeout.connect(_on_dash_timer_timeout)
 	
 	sword_visual.visible = false
@@ -135,11 +134,6 @@ func attack():
 	sword_hitbox.monitoring = false
 	sword_visual.visible = false
 	is_attacking = false
-
-# 👉 CHÍNH LÀ CHỖ NÀY: Đã thêm dấu _ vào trước chữ body để xóa lỗi màu vàng!
-func _on_sword_hit_something(_body):
-	pass
-
 func start_dash():
 	is_dashing = true
 	velocity.y = 0
