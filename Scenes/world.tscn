@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dypa0p6hxq8in"]
 
 [ext_resource type="PackedScene" uid="uid://cup8chk8k2q1i" path="res://Characters/player.tscn" id="1_5a7ea"]
+[ext_resource type="PackedScene" uid="uid://cjs5i4gbiia07" path="res://Props/portal.tscn" id="1_o06y3"]
 [ext_resource type="PackedScene" uid="uid://bxb387vb2jg00" path="res://Enemies/enemy.tscn" id="2_8j60k"]
-[ext_resource type="Script" uid="uid://bfirimj8x2pmq" path="res://portal.gd" id="3_fo5ed"]
 [ext_resource type="PackedScene" uid="uid://cesenweeqc6b6" path="res://Enemies/split_enemy.tscn" id="4_8j60k"]
 [ext_resource type="PackedScene" uid="uid://cdpprrjf7bijh" path="res://Enemies/ranged_enemy.tscn" id="5_fo5ed"]
 [ext_resource type="PackedScene" uid="uid://c40504xanyv5j" path="res://Characters/npc.tscn" id="6_5ukr8"]
@@ -10,9 +10,6 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fj7yv"]
 size = Vector2(4397, 205.75)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_aqk2v"]
-size = Vector2(72.5, 1016.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5a7ea"]
 size = Vector2(584, 70)
@@ -32,14 +29,8 @@ offset_right = 1164.0
 offset_bottom = 197.0
 color = Color(0, 1, 0, 1)
 
-[node name="Portal" type="Area2D" parent="." unique_id=1504582397]
-collision_layer = 0
-collision_mask = 255
-script = ExtResource("3_fo5ed")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal" unique_id=1938447980]
-position = Vector2(1115.75, -102.25)
-shape = SubResource("RectangleShape2D_aqk2v")
+[node name="Portal" parent="." unique_id=1574698020 instance=ExtResource("1_o06y3")]
+next_scene_path = "uid://w8pxjnkv06yw"
 
 [node name="Player" parent="." unique_id=562729849 instance=ExtResource("1_5a7ea")]
 position = Vector2(-3173, -66)

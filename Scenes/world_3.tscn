@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://dgblfkffivxlq"]
+
+[ext_resource type="PackedScene" uid="uid://cup8chk8k2q1i" path="res://Characters/player.tscn" id="1_xdkel"]
+[ext_resource type="Script" uid="uid://bke51xdr2u1hp" path="res://Scenes/kill_zone.gd" id="2_xl08u"]
+[ext_resource type="PackedScene" uid="uid://bfsk6ebasvvoe" path="res://Props/crumbling_platform.tscn" id="3_5hk8i"]
+[ext_resource type="PackedScene" uid="uid://cjs5i4gbiia07" path="res://Props/portal.tscn" id="4_bcngy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xdkel"]
+size = Vector2(4275, 131.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xl08u"]
+size = Vector2(315, 644)
+
+[node name="world_3" type="Node2D" unique_id=250802419]
+
+[node name="Player" parent="." unique_id=562729849 instance=ExtResource("1_xdkel")]
+position = Vector2(-2181, -180)
+
+[node name="KillZone" type="Area2D" parent="." unique_id=187870747]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_xl08u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone" unique_id=1994932906]
+position = Vector2(-983.5, 607)
+shape = SubResource("RectangleShape2D_xdkel")
+
+[node name="Pillar" type="StaticBody2D" parent="." unique_id=1881285769]
+position = Vector2(-1940, -1)
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pillar" unique_id=352971249]
+position = Vector2(-146, 209)
+shape = SubResource("RectangleShape2D_xl08u")
+
+[node name="ColorRect" type="ColorRect" parent="Pillar" unique_id=291592727]
+offset_left = -307.0
+offset_top = -114.0
+offset_right = 27.0
+offset_bottom = 545.0
+color = Color(0.35, 0.2625, 0, 1)
+
+[node name="Pillar4" type="StaticBody2D" parent="." unique_id=983260771]
+position = Vector2(-1940, -1)
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pillar4" unique_id=32329627]
+position = Vector2(2390, 326)
+shape = SubResource("RectangleShape2D_xl08u")
+
+[node name="ColorRect" type="ColorRect" parent="Pillar4" unique_id=231442386]
+offset_left = 2222.0
+offset_top = -1.0
+offset_right = 2556.0
+offset_bottom = 658.0
+color = Color(0.35, 0.2625, 0, 1)
+
+[node name="Pillar5" type="StaticBody2D" parent="." unique_id=782007231]
+position = Vector2(-1940, -1)
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pillar5" unique_id=1462833736]
+position = Vector2(2925, 220)
+shape = SubResource("RectangleShape2D_xl08u")
+
+[node name="ColorRect" type="ColorRect" parent="Pillar5" unique_id=1924067150]
+offset_left = 2766.0
+offset_top = -119.0
+offset_right = 3100.0
+offset_bottom = 540.0
+color = Color(0.35, 0.2625, 0, 1)
+
+[node name="Pillar2" type="StaticBody2D" parent="." unique_id=2121501348]
+position = Vector2(-1940, -1)
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pillar2" unique_id=331881019]
+position = Vector2(410, 204)
+shape = SubResource("RectangleShape2D_xl08u")
+
+[node name="ColorRect" type="ColorRect" parent="Pillar2" unique_id=974616215]
+offset_left = 234.0
+offset_top = -122.0
+offset_right = 568.0
+offset_bottom = 537.0
+color = Color(0.35, 0.2625, 0, 1)
+
+[node name="Pillar3" type="StaticBody2D" parent="." unique_id=36253519]
+position = Vector2(-1940, -1)
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pillar3" unique_id=929726684]
+position = Vector2(938, 315)
+shape = SubResource("RectangleShape2D_xl08u")
+
+[node name="ColorRect" type="ColorRect" parent="Pillar3" unique_id=832937505]
+offset_left = 776.0
+offset_top = -6.0
+offset_right = 1110.0
+offset_bottom = 653.0
+color = Color(0.35, 0.2625, 0, 1)
+
+[node name="CrumblingPlatform" parent="." unique_id=1249131488 instance=ExtResource("3_5hk8i")]
+position = Vector2(-690, -1)
+
+[node name="CrumblingPlatform2" parent="." unique_id=1551253837 instance=ExtResource("3_5hk8i")]
+position = Vector2(-462, 2)
+
+[node name="CrumblingPlatform3" parent="." unique_id=1927442895 instance=ExtResource("3_5hk8i")]
+position = Vector2(-230, -2)
+
+[node name="CrumblingPlatform4" parent="." unique_id=679421761 instance=ExtResource("3_5hk8i")]
+position = Vector2(2, 2)
+
+[node name="Portal" parent="." unique_id=1574698020 instance=ExtResource("4_bcngy")]
+position = Vector2(-13, 2)
+next_scene_path = "uid://e6ov5vmpx5t1"

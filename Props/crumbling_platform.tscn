@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://bfsk6ebasvvoe"]
+
+[ext_resource type="Script" uid="uid://bvfw4q3422uos" path="res://Props/crumbling_platform.gd" id="1_b7pql"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rkqwh"]
+size = Vector2(154, 39)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4aci0"]
+size = Vector2(156, 0.5)
+
+[node name="CrumblingPlatform" type="AnimatableBody2D" unique_id=1249131488]
+collision_mask = 0
+script = ExtResource("1_b7pql")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1557789804]
+offset_right = 155.0
+offset_bottom = 40.0
+color = Color(0.569365, 0.4498005, 0.22172177, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=118977003]
+position = Vector2(77, 19.5)
+shape = SubResource("RectangleShape2D_rkqwh")
+
+[node name="TriggerArea" type="Area2D" parent="." unique_id=1590640073]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerArea" unique_id=294762004]
+position = Vector2(77, -0.75)
+shape = SubResource("RectangleShape2D_4aci0")
+
+[node name="FallTimer" type="Timer" parent="." unique_id=846805871]
+one_shot = true

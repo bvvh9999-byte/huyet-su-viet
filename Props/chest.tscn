@@ -9,7 +9,6 @@ size = Vector2(206, 112)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_fxsxq")
-hidden_map_path = "uid://dhlrs7yg1k523"
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=82619099]
 offset_right = 205.0

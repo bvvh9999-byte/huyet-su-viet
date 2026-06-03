@@ -78,3 +78,43 @@ func _on_vũ_khí_item_activated(index):
 		
 	# Tải lại toàn bộ giao diện để thấy sự thay đổi ngay lập tức
 	cap_nhat_giao_dien()
+	
+	# Ép giao diện nhả quyền điều khiển bàn phím trả lại cho Player
+	get_viewport().gui_release_focus()
+
+
+# ====================================================
+# KHI CLICK ĐÚP VÀO 1 MÓN ĐỒ TRONG TAB VẬT PHẨM
+# ====================================================
+func _on_vật_phẩm_item_activated(index):
+	# 1. Lấy tên vật phẩm bạn vừa click đúp
+	var ten_vat_pham = Global.kho_vat_pham[index]
+	
+	print("\n=> ĐANG CỐ SỬ DỤNG VẬT PHẨM: ", ten_vat_pham)
+	
+	var da_su_dung_thanh_cong = false
+	
+	# 2. KIỂM TRA LOẠI VẬT PHẨM VÀ TÁC DỤNG CỦA NÓ
+	if ten_vat_pham == "Bình Máu Nhỏ":
+		if Global.player_hp < Global.max_hp:
+			# Bơm 30 máu
+			Global.player_hp += 30
+			if Global.player_hp > Global.max_hp:
+				Global.player_hp = Global.max_hp # Không cho lố máu tối đa
+				
+			print("-> Uống máu ngon quá! Đã hồi phục sinh lực.")
+			da_su_dung_thanh_cong = true
+		else:
+			print("-> Máu đang đầy, không cần uống!")
+			
+	elif ten_vat_pham == "Lá Bùa Hồi Sinh":
+		print("-> Lá bùa này chỉ tự động kích hoạt khi bạn chết. Không thể dùng tay!")
+	
+	# 3. NẾU UỐNG THÀNH CÔNG -> XÓA NÓ KHỎI TÚI ĐỒ VÀ CẬP NHẬT GIAO DIỆN
+	if da_su_dung_thanh_cong:
+		Global.kho_vat_pham.remove_at(index) # Xóa bình máu đi
+		cap_nhat_giao_dien() # Tải lại hình ảnh
+	
+	# 4. CÂU THẦN CHÚ CHỐNG KẸT NÚT THOÁT (BẮT BUỘC)
+	# Dù dùng thành công hay thất bại, cũng phải nhả quyền kiểm soát bàn phím ra!
+	get_viewport().gui_release_focus()

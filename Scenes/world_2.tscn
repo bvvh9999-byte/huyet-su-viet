@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cdpprrjf7bijh" path="res://Enemies/ranged_enemy.tscn" id="4_bvv5j"]
 [ext_resource type="PackedScene" uid="uid://u1s0g2pq0sgj" path="res://Props/spike_trap.tscn" id="5_w60u7"]
 [ext_resource type="PackedScene" uid="uid://b2iahd1vr8ybe" path="res://Props/chest.tscn" id="6_4i21e"]
+[ext_resource type="PackedScene" uid="uid://cjs5i4gbiia07" path="res://Props/portal.tscn" id="7_6uuwl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fj7yv"]
 size = Vector2(3737, 142.75)
@@ -84,7 +85,11 @@ color = Color(0.14117648, 0.35686275, 0.28235295, 1)
 position = Vector2(308, -433)
 
 [node name="SpikeTrap" parent="." unique_id=495765900 instance=ExtResource("5_w60u7")]
-position = Vector2(500, -29)
+position = Vector2(149, -26)
 
 [node name="Chest" parent="." unique_id=831733411 instance=ExtResource("6_4i21e")]
 position = Vector2(-876, -578)
+
+[node name="Portal" parent="." unique_id=1574698020 instance=ExtResource("7_6uuwl")]
+position = Vector2(-27, -47)
+next_scene_path = "uid://dgblfkffivxlq"

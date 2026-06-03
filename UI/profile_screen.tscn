@@ -78,3 +78,4 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [connection signal="item_activated" from="ColorRect/HBoxContainer/InventoryTabs/Vũ Khí" to="." method="_on_vũ_khí_item_activated"]
+[connection signal="item_activated" from="ColorRect/HBoxContainer/InventoryTabs/Vật Phẩm" to="." method="_on_vật_phẩm_item_activated"]
