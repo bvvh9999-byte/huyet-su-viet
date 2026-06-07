@@ -10,6 +10,12 @@ var player_exp = 0
 var exp_to_next_level = 100
 var bonus_damage = 0
 var toc_do = 200
+var vang = 100 # Cho sẵn 100 Vàng để test mua đồ
+var diem_ky_nang = 0 # Skill Points (SP)
+# Trạng thái các kỹ năng: false = Chưa học, true = Đã học
+var skill_tang_toc_danh = false
+var skill_song_kiem = false
+var skill_hao_khi = false
 
 # ==========================================
 # TRANG BỊ & KHO ĐỒ

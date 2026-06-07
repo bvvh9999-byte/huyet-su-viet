@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://g6jlitlo8w2"]
+
+[ext_resource type="Script" uid="uid://mmf1h3mvaxi4" path="res://UI/shop_ui.gd" id="1_r8gjt"]
+
+[node name="ShopUI" type="CanvasLayer" unique_id=536540593]
+process_mode = 3
+script = ExtResource("1_r8gjt")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=751084434]
+offset_right = 1154.0
+offset_bottom = 652.0
+color = Color(0, 0, 0, 0.4392157)
+
+[node name="LblTien" type="Label" parent="ColorRect" unique_id=277315576]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Vàng: 0"
+
+[node name="BtnMuaMau" type="Button" parent="ColorRect" unique_id=953080994]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 16.0
+offset_top = 61.0
+offset_right = 212.0
+offset_bottom = 92.0
+text = "Mua Bình Máu (20 Vàng)"
+
+[node name="BtnMuaKiem" type="Button" parent="ColorRect" unique_id=288966394]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 13.0
+offset_top = 112.0
+offset_right = 215.0
+offset_bottom = 143.0
+text = "Mua Kiếm Bạc (100 Vàng)"
+
+[node name="BtnThoat" type="Button" parent="ColorRect" unique_id=349786730]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 12.0
+offset_top = 603.0
+offset_right = 141.0
+offset_bottom = 634.0
+text = "Đóng Cửa Hàng"
+
+[connection signal="pressed" from="ColorRect/BtnMuaMau" to="." method="_on_btn_mua_mau_pressed"]
+[connection signal="pressed" from="ColorRect/BtnMuaKiem" to="." method="_on_btn_mua_kiem_pressed"]
+[connection signal="pressed" from="ColorRect/BtnThoat" to="." method="_on_btn_thoat_pressed"]

@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://d4m7eaf8uh5g7"]
+
+[ext_resource type="Script" uid="uid://byv68u6v6i7cn" path="res://UI/skill_tree_ui.gd" id="1_amsly"]
+
+[node name="SkillTreeUI" type="CanvasLayer" unique_id=136186376]
+process_mode = 3
+script = ExtResource("1_amsly")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=477412834]
+offset_left = 1.0
+offset_right = 1149.0
+offset_bottom = 649.0
+color = Color(0, 0, 0, 0.4392157)
+
+[node name="LblDiem" type="Label" parent="ColorRect" unique_id=1782642458]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Điểm Kỹ Năng: 0"
+
+[node name="BtnTocDanh" type="Button" parent="ColorRect" unique_id=2119104231]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = 48.0
+offset_right = 258.0
+offset_bottom = 79.0
+text = "Học Tăng Tốc Đánh (Tốn 1 Điểm)"
+
+[node name="BtnSongKiem" type="Button" parent="ColorRect" unique_id=2057687785]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 325.0
+offset_top = 49.0
+offset_right = 557.0
+offset_bottom = 80.0
+text = "\"Học Song Kiếm (Tốn 2 Điểm)"
+
+[node name="BtnHaoKhi" type="Button" parent="ColorRect" unique_id=1454592317]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 610.0
+offset_top = 51.0
+offset_right = 814.0
+offset_bottom = 82.0
+text = "Học Hào Khí (Tốn 3 Điểm)"
+
+[node name="BtnThoat" type="Button" parent="ColorRect" unique_id=486551503]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 13.0
+offset_top = 603.0
+offset_right = 140.0
+offset_bottom = 634.0
+text = "Đóng bảng Skill"
+
+[connection signal="pressed" from="ColorRect/BtnTocDanh" to="." method="_on_btn_toc_danh_pressed"]
+[connection signal="pressed" from="ColorRect/BtnSongKiem" to="." method="_on_btn_song_kiem_pressed"]
+[connection signal="pressed" from="ColorRect/BtnHaoKhi" to="." method="_on_btn_hao_khi_pressed"]
+[connection signal="pressed" from="ColorRect/BtnThoat" to="." method="_on_btn_thoat_pressed"]

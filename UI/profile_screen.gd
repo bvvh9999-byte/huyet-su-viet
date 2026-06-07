@@ -1,8 +1,6 @@
 extends CanvasLayer
 
-# ==========================================
-# KẾT NỐI VỚI GIAO DIỆN (Dùng % Unique Name)
-# ==========================================
+# Kết nối giao diện độc nhất (%)
 @onready var lbl_level = %LblLevel
 @onready var lbl_hp = %LblHP
 @onready var lbl_damage = %LblDamage
@@ -16,17 +14,24 @@ extends CanvasLayer
 @onready var list_vat_pham = %"Vật Phẩm"
 
 func _ready():
-	# Ép bảng Profile luôn hoạt động ngay cả khi game đang bị Pause
+	# 1. Ép bảng luôn chạy khi game Pause
 	self.process_mode = Node.PROCESS_MODE_ALWAYS
 	
-	# Load thông số ngay khi vừa mở bảng
+	# 2. ĐOẠN CODE "HỦY DIỆT": Ép tất cả các nút và danh sách 
+	# KHÔNG ĐƯỢC PHÉP cướp bàn phím của người chơi!
+	btn_weapon.focus_mode = Control.FOCUS_NONE
+	btn_armor.focus_mode = Control.FOCUS_NONE
+	btn_accessory.focus_mode = Control.FOCUS_NONE
+	list_vu_khi.focus_mode = Control.FOCUS_NONE
+	list_vat_pham.focus_mode = Control.FOCUS_NONE
+	
+	# Load giao diện lúc mới vào
 	cap_nhat_giao_dien()
 
 # ==========================================
-# HÀM LÀM MỚI TOÀN BỘ GIAO DIỆN MÀN HÌNH
+# HÀM LÀM MỚI TOÀN BỘ GIAO DIỆN
 # ==========================================
 func cap_nhat_giao_dien():
-	# 1. Cập nhật cột CHỈ SỐ (Lấy từ Global)
 	lbl_level.text = "Cấp độ: " + str(Global.player_level)
 	lbl_hp.text = "Sinh lực: " + str(Global.player_hp) + " / " + str(Global.max_hp)
 	
@@ -34,87 +39,67 @@ func cap_nhat_giao_dien():
 	lbl_damage.text = "Sát thương: " + str(tong_dam)
 	lbl_speed.text = "Tốc độ: " + str(Global.toc_do)
 	
-	# 2. Cập nhật cột TRANG BỊ (Đồ đang mặc trên người)
 	btn_weapon.text = "Vũ khí: " + Global.trang_bi_vu_khi
 	btn_armor.text = "Giáp: " + Global.trang_bi_ao_giap
 	btn_accessory.text = "Phụ kiện: " + Global.trang_bi_day_chuyen
 	
-	# 3. Làm sạch Kho Đồ cũ trên màn hình
 	list_vu_khi.clear()
 	list_vat_pham.clear()
 	
-	# 4. Đổ dữ liệu mới từ "Túi Không Gian" (Global) vào cột KHO ĐỒ
 	for vu_khi in Global.kho_vu_khi:
 		list_vu_khi.add_item(vu_khi)
 		
 	for vat_pham in Global.kho_vat_pham:
 		list_vat_pham.add_item(vat_pham)
 
-
 # ==========================================
-# SỰ KIỆN CLICK ĐÚP VÀO VŨ KHÍ TRONG KHO
+# SỰ KIỆN CLICK ĐÚP VŨ KHÍ (TRANG BỊ)
 # ==========================================
 func _on_vũ_khí_item_activated(index):
-	# Lấy tên món vũ khí bạn vừa click đúp
 	var ten_vu_khi_moi = Global.kho_vu_khi[index]
 	
-	# Lột vũ khí đang cầm trên tay cất vào lại kho đồ (nếu có cầm)
 	if Global.trang_bi_vu_khi != "Chưa có":
 		Global.kho_vu_khi.append(Global.trang_bi_vu_khi)
 		
-	# Mặc vũ khí mới lên người
 	Global.trang_bi_vu_khi = ten_vu_khi_moi
-	
-	# Xóa vũ khí mới đó khỏi kho (vì đang cầm trên tay rồi)
 	Global.kho_vu_khi.remove_at(index)
 	
-	# TĂNG SÁT THƯƠNG DỰA TRÊN TÊN VŨ KHÍ VỪA MẶC!
 	if ten_vu_khi_moi == "Kiếm Gỗ Tầm Sét":
 		Global.bonus_damage = 5
 	elif ten_vu_khi_moi == "Gươm Rỉ Sét":
 		Global.bonus_damage = 15
-	elif ten_vu_khi_moi == "Huyết Kiếm": # Quà của NPC
+	elif ten_vu_khi_moi == "Huyết Kiếm Truyền Thuyết":
 		Global.bonus_damage = 30
+	elif ten_vu_khi_moi == "Huyết Kiếm":
+		Global.bonus_damage = 25
+	elif ten_vu_khi_moi == "Kiếm Bạc": # Thêm cây kiếm mua ở Shop
+		Global.bonus_damage = 20
 		
-	# Tải lại toàn bộ giao diện để thấy sự thay đổi ngay lập tức
 	cap_nhat_giao_dien()
-	
-	# Ép giao diện nhả quyền điều khiển bàn phím trả lại cho Player
-	get_viewport().gui_release_focus()
+	get_viewport().gui_release_focus() # Trả phím
 
-
-# ====================================================
-# KHI CLICK ĐÚP VÀO 1 MÓN ĐỒ TRONG TAB VẬT PHẨM
-# ====================================================
+# ==========================================
+# SỰ KIỆN CLICK ĐÚP VẬT PHẨM (SỬ DỤNG)
+# ==========================================
 func _on_vật_phẩm_item_activated(index):
-	# 1. Lấy tên vật phẩm bạn vừa click đúp
 	var ten_vat_pham = Global.kho_vat_pham[index]
-	
-	print("\n=> ĐANG CỐ SỬ DỤNG VẬT PHẨM: ", ten_vat_pham)
-	
 	var da_su_dung_thanh_cong = false
 	
-	# 2. KIỂM TRA LOẠI VẬT PHẨM VÀ TÁC DỤNG CỦA NÓ
 	if ten_vat_pham == "Bình Máu Nhỏ":
 		if Global.player_hp < Global.max_hp:
-			# Bơm 30 máu
 			Global.player_hp += 30
 			if Global.player_hp > Global.max_hp:
-				Global.player_hp = Global.max_hp # Không cho lố máu tối đa
-				
-			print("-> Uống máu ngon quá! Đã hồi phục sinh lực.")
+				Global.player_hp = Global.max_hp
 			da_su_dung_thanh_cong = true
+			print("=> Đã uống 1 Bình Máu Nhỏ!")
 		else:
-			print("-> Máu đang đầy, không cần uống!")
+			print("=> Máu đang đầy!")
 			
 	elif ten_vat_pham == "Lá Bùa Hồi Sinh":
-		print("-> Lá bùa này chỉ tự động kích hoạt khi bạn chết. Không thể dùng tay!")
+		print("=> Lá bùa này sẽ tự kích hoạt khi bạn chết!")
 	
-	# 3. NẾU UỐNG THÀNH CÔNG -> XÓA NÓ KHỎI TÚI ĐỒ VÀ CẬP NHẬT GIAO DIỆN
 	if da_su_dung_thanh_cong:
-		Global.kho_vat_pham.remove_at(index) # Xóa bình máu đi
-		cap_nhat_giao_dien() # Tải lại hình ảnh
-	
-	# 4. CÂU THẦN CHÚ CHỐNG KẸT NÚT THOÁT (BẮT BUỘC)
-	# Dù dùng thành công hay thất bại, cũng phải nhả quyền kiểm soát bàn phím ra!
-	get_viewport().gui_release_focus()
+		Global.kho_vat_pham.remove_at(index)
+		cap_nhat_giao_dien()
+		
+	get_viewport().gui_release_focus() # Trả phím

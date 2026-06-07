@@ -4,7 +4,7 @@ extends CharacterBody2D
 # THÔNG SỐ CƠ BẢN
 # ==========================================
 @export var SPEED = 200.0
-@export var JUMP_VELOCITY = -800.0
+@export var JUMP_VELOCITY = -400.0
 @export var DASH_SPEED = 600.0
 
 var is_dashing = false
@@ -12,12 +12,15 @@ var is_attacking = false
 var facing_right = true
 
 # ==========================================
-# KẾT NỐI GIAO DIỆN (UI) VÀ NODE
+# KẾT NỐI GIAO DIỆN (UI) VÀ NODE CON
 # ==========================================
 @onready var sprite = $Sprite2D
 @onready var dash_timer = $DashTimer
 @onready var sword_hitbox = $SwordHitbox
 @onready var sword_visual = $SwordHitbox/ColorRect
+
+# Bạn PHẢI thêm 1 Node AudioStreamPlayer tên là "SoundChop" vào Player nhé!
+@onready var sound_chop = $SoundChop 
 
 # HUD trên màn hình
 @onready var health_bar = $CanvasLayer/HealthBar
@@ -31,6 +34,7 @@ var profile_scene = preload("res://UI/profile_screen.tscn")
 var profile_instance = null 
 
 func _ready():
+	# Ép Player luôn hoạt động để bắt phím khi Pause
 	self.process_mode = Node.PROCESS_MODE_ALWAYS
 	
 	dash_timer.timeout.connect(_on_dash_timer_timeout)
@@ -46,7 +50,7 @@ func _ready():
 		exp_bar.value = Global.player_exp
 
 # ==========================================
-# HÀM BẮT BÀN PHÍM CHÍNH (MIỄN NHIỄM PAUSE)
+# BẮT BÀN PHÍM (MIỄN NHIỄM VỚI PAUSE)
 # ==========================================
 func _unhandled_input(event):
 	if event.is_action_pressed("open_profile"):
@@ -64,6 +68,7 @@ func _unhandled_input(event):
 # HỆ THỐNG VẬT LÝ VÀ CHẠY NHẢY 
 # ==========================================
 func _physics_process(delta):
+	# Nếu game đang Pause (do mở túi hoặc lên cấp) thì cấm chạy nhảy
 	if get_tree().paused:
 		return 
 		
@@ -74,6 +79,7 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
+	# Bấm chém (J)
 	if Input.is_action_just_pressed("attack") and not is_attacking and is_on_floor():
 		attack()
 		return
@@ -83,13 +89,16 @@ func _physics_process(delta):
 		move_and_slide()
 		return
 
+	# Bấm Nhảy (Space)
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
+	# Bấm Lướt (K / Shift)
 	if Input.is_action_just_pressed("dash") and is_on_floor():
 		start_dash()
 		return
 
+	# Trái phải (A, D)
 	var direction = Input.get_axis("move_left", "move_right")
 	if direction:
 		velocity.x = direction * SPEED
@@ -106,6 +115,7 @@ func _physics_process(delta):
 
 	move_and_slide()
 	
+	# --- CẬP NHẬT CHỮ NHIỆM VỤ GÓC MÀN HÌNH ---
 	if quest_tracker != null:
 		var hien_thi_chu = ""
 		for ma_nv in Global.danh_sach_nhiem_vu:
@@ -115,25 +125,40 @@ func _physics_process(delta):
 		quest_tracker.text = hien_thi_chu
 
 # ==========================================
-# CHIẾN ĐẤU VÀ KỸ NĂNG
+# CHIẾN ĐẤU (CHÉM QUÁI BẰNG CODE HỦY DIỆT)
 # ==========================================
 func attack():
 	is_attacking = true
 	sword_visual.visible = true
 	sword_hitbox.monitoring = true 
 	
+	# PHÁT ÂM THANH CHÉM KIẾM (Nếu đã nạp file âm thanh)
+	if sound_chop and sound_chop.stream != null:
+		sound_chop.play()
+	
+	# Đợi 1 frame vật lý
 	await get_tree().physics_frame
 	
+	# Quét xem có ai trúng kiếm không
 	var bodies = sword_hitbox.get_overlapping_bodies()
 	for body in bodies:
 		if body.has_method("take_damage") and body != self:
 			var tong_sat_thuong = 10 + Global.bonus_damage 
 			body.take_damage(tong_sat_thuong)
 			
+	# Giữ thế chém 0.2s
 	await get_tree().create_timer(0.2).timeout
 	sword_hitbox.monitoring = false
 	sword_visual.visible = false
 	is_attacking = false
+
+# (Hàm phụ trợ để chống lỗi màu vàng của Godot)
+func _on_sword_hit_something(_body):
+	pass
+
+# ==========================================
+# KỸ NĂNG LƯỚT (DASH)
+# ==========================================
 func start_dash():
 	is_dashing = true
 	velocity.y = 0
@@ -145,7 +170,7 @@ func _on_dash_timer_timeout():
 	is_dashing = false
 
 # ==========================================
-# CHỊU SÁT THƯƠNG VÀ LÊN CẤP
+# CHỊU SÁT THƯƠNG VÀ GAME OVER
 # ==========================================
 func take_damage(amount):
 	Global.player_hp -= amount
@@ -161,6 +186,9 @@ func take_damage(amount):
 			get_tree().root.add_child(game_over)
 			get_tree().paused = true 
 
+# ==========================================
+# NHẬN KINH NGHIỆM VÀ LÊN CẤP
+# ==========================================
 func gain_exp(amount):
 	Global.player_exp += amount
 	

@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bbihh1wegk7nu"]
+
+[ext_resource type="Script" uid="uid://pl0lb35c3b2h" path="res://Characters/shop_npc.gd" id="1_byi2k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_twnlf"]
+radius = 76.902534
+
+[node name="ShopNPC" type="Area2D" unique_id=1698492494]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_byi2k")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1936388824]
+offset_right = 70.0
+offset_bottom = 60.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=523111348]
+position = Vector2(34, 27)
+shape = SubResource("CircleShape2D_twnlf")
+
+[node name="Label" type="Label" parent="." unique_id=420609525]
+offset_left = -11.0
+offset_top = -35.0
+offset_right = 81.0
+offset_bottom = -12.0
+text = "[E] Mở Shop"

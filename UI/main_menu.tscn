@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://ce13ersapieq1"]
+
+[ext_resource type="Script" uid="uid://cochv8ju6ti6k" path="res://UI/main_menu.gd" id="1_p8ccj"]
+
+[node name="MainMenu" type="Control" unique_id=2033471490]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p8ccj")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=444849154]
+layout_mode = 0
+offset_right = 1153.0
+offset_bottom = 650.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="." unique_id=145283622]
+layout_mode = 0
+offset_left = 356.0
+offset_top = 160.0
+offset_right = 801.0
+offset_bottom = 243.0
+theme_override_colors/font_color = Color(1, 0.00999999, 0.00999999, 1)
+theme_override_font_sizes/font_size = 60
+text = " HUYẾT SỬ VIỆT"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=180396516]
+layout_mode = 0
+offset_left = 407.0
+offset_top = 314.0
+offset_right = 730.0
+offset_bottom = 352.0
+
+[node name="BtnPlay" type="Button" parent="VBoxContainer" unique_id=688718555]
+unique_name_in_owner = true
+layout_mode = 2
+text = "BẮT ĐẦU HÀNH TRÌNH"
+
+[node name="BtnQuit" type="Button" parent="VBoxContainer" unique_id=706226245]
+unique_name_in_owner = true
+layout_mode = 2
+text = "THOÁT TRÒ CHƠI"
+
+[connection signal="pressed" from="VBoxContainer/BtnPlay" to="." method="_on_btn_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/BtnQuit" to="." method="_on_btn_quit_pressed"]
