@@ -4,6 +4,7 @@
 
 [node name="SkillTreeUI" type="CanvasLayer" unique_id=136186376]
 process_mode = 3
+layer = 100
 script = ExtResource("1_amsly")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=477412834]

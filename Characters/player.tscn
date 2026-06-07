@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c3oymkedu6xuy" path="res://Characters/player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://cok6rypfiw0aq" path="res://icon.svg" id="2_i3pqv"]
 [ext_resource type="AudioStream" uid="uid://bje0qij8rh2gt" path="res://Assets/dragon-studio-violent-sword-slice-393839.mp3" id="3_vb825"]
+[ext_resource type="AudioStream" uid="uid://be57ovxd5ixuh" path="res://Assets/game_over.mp3" id="4_65n15"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqtel"]
 size = Vector2(131, 129)
@@ -73,3 +74,6 @@ text = "ĐANG TEST NHIỆM VỤ"
 
 [node name="SoundChop" type="AudioStreamPlayer" parent="." unique_id=340506043]
 stream = ExtResource("3_vb825")
+
+[node name="SoundDie" type="AudioStreamPlayer" parent="." unique_id=374692273]
+stream = ExtResource("4_65n15")

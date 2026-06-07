@@ -24,22 +24,27 @@ layout_mode = 2
 [node name="LblLevel" type="Label" parent="ColorRect/HBoxContainer/StatsPanel" unique_id=210420622]
 unique_name_in_owner = true
 layout_mode = 2
-text = "LblLevel"
+text = "Level"
 
 [node name="LblHP" type="Label" parent="ColorRect/HBoxContainer/StatsPanel" unique_id=1425171664]
 unique_name_in_owner = true
 layout_mode = 2
-text = "LblHP"
+text = "HP"
 
 [node name="LblDamage" type="Label" parent="ColorRect/HBoxContainer/StatsPanel" unique_id=1974290977]
 unique_name_in_owner = true
 layout_mode = 2
-text = "LblDamage"
+text = "Damage"
 
 [node name="LblSpeed" type="Label" parent="ColorRect/HBoxContainer/StatsPanel" unique_id=232715918]
 unique_name_in_owner = true
 layout_mode = 2
-text = "LblSpeed"
+text = "Speed"
+
+[node name="LblAtkSpeed" type="Label" parent="ColorRect/HBoxContainer/StatsPanel" unique_id=625114981]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Tốc vung kiếm: Bìng thường"
 
 [node name="InventoryTabs" type="TabContainer" parent="ColorRect/HBoxContainer" unique_id=1955613237]
 layout_mode = 2

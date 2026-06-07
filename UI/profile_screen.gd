@@ -5,6 +5,7 @@ extends CanvasLayer
 @onready var lbl_hp = %LblHP
 @onready var lbl_damage = %LblDamage
 @onready var lbl_speed = %LblSpeed
+@onready var lbl_atk_speed = %LblAtkSpeed
 
 @onready var btn_weapon = %BtnWeapon
 @onready var btn_armor = %BtnArmor
@@ -38,6 +39,13 @@ func cap_nhat_giao_dien():
 	var tong_dam = 10 + Global.bonus_damage
 	lbl_damage.text = "Sát thương: " + str(tong_dam)
 	lbl_speed.text = "Tốc độ: " + str(Global.toc_do)
+	# --- CẬP NHẬT TỐC ĐỘ VUNG KIẾM ---
+	if Global.skill_tang_toc_danh:
+		lbl_atk_speed.text = "Tốc độ chém: Siêu Tốc (0.1s)"
+		lbl_atk_speed.modulate = Color(1, 1, 0) # Tô màu vàng cho ngầu
+	else:
+		lbl_atk_speed.text = "Tốc độ chém: Bình Thường (0.2s)"
+		lbl_atk_speed.modulate = Color(1, 1, 1)
 	
 	btn_weapon.text = "Vũ khí: " + Global.trang_bi_vu_khi
 	btn_armor.text = "Giáp: " + Global.trang_bi_ao_giap
