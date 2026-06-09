@@ -1,14 +1,22 @@
 [gd_scene format=3 uid="uid://dhlrs7yg1k523"]
 
 [ext_resource type="PackedScene" uid="uid://cup8chk8k2q1i" path="res://Characters/player.tscn" id="1_ktidu"]
-[ext_resource type="PackedScene" uid="uid://bxb387vb2jg00" path="res://Enemies/enemy.tscn" id="2_rcsqj"]
-[ext_resource type="PackedScene" uid="uid://cdpprrjf7bijh" path="res://Enemies/ranged_enemy.tscn" id="4_7dpff"]
+[ext_resource type="PackedScene" uid="uid://bfsk6ebasvvoe" path="res://Props/crumbling_platform.tscn" id="2_rr8tv"]
+[ext_resource type="Script" uid="uid://bke51xdr2u1hp" path="res://Scenes/kill_zone.gd" id="3_ytxjv"]
+[ext_resource type="PackedScene" uid="uid://cjs5i4gbiia07" path="res://Props/portal.tscn" id="4_qggpr"]
+[ext_resource type="PackedScene" uid="uid://6ks0bakpoo88" path="res://Props/cursed_chest.tscn" id="5_wv2pt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fj7yv"]
 size = Vector2(3737, 407.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ar73u"]
 size = Vector2(589.875, 92)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ytxjv"]
+size = Vector2(1618.5, 644)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qggpr"]
+size = Vector2(4275, 131.25)
 
 [node name="World" type="Node2D" unique_id=1466733705]
 position = Vector2(-2, 0)
@@ -27,10 +35,7 @@ offset_bottom = 408.0
 color = Color(0, 0, 0, 1)
 
 [node name="Player" parent="." unique_id=562729849 instance=ExtResource("1_ktidu")]
-position = Vector2(-2551, -68)
-
-[node name="Enemy" parent="." unique_id=2053603259 instance=ExtResource("2_rcsqj")]
-position = Vector2(-293, -61)
+position = Vector2(-2383, -77)
 
 [node name="Platform" type="StaticBody2D" parent="." unique_id=668247387]
 
@@ -74,5 +79,45 @@ offset_right = 295.5
 offset_bottom = 46.0
 color = Color(0.14117648, 0.35686275, 0.28235295, 1)
 
-[node name="RangedEnemy" parent="." unique_id=953915621 instance=ExtResource("4_7dpff")]
-position = Vector2(308, -433)
+[node name="CrumblingPlatform" parent="." unique_id=1249131488 instance=ExtResource("2_rr8tv")]
+position = Vector2(379, -500)
+
+[node name="Pillar" type="StaticBody2D" parent="." unique_id=1009804499]
+position = Vector2(-1940, -1)
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pillar" unique_id=1657049957]
+position = Vector2(4255, -525)
+shape = SubResource("RectangleShape2D_ytxjv")
+
+[node name="ColorRect" type="ColorRect" parent="Pillar" unique_id=528784997]
+offset_left = 3432.0
+offset_top = -849.0
+offset_right = 5073.0
+offset_bottom = -190.0
+color = Color(0.35, 0.2625, 0, 1)
+
+[node name="CrumblingPlatform2" parent="." unique_id=1016033467 instance=ExtResource("2_rr8tv")]
+position = Vector2(663, -600)
+
+[node name="CrumblingPlatform3" parent="." unique_id=2004809111 instance=ExtResource("2_rr8tv")]
+position = Vector2(1108, -839)
+
+[node name="CrumblingPlatform4" parent="." unique_id=484060273 instance=ExtResource("2_rr8tv")]
+position = Vector2(908, -700)
+
+[node name="KillZone" type="Area2D" parent="." unique_id=58883714]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_ytxjv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone" unique_id=1868339848]
+position = Vector2(1702, 346)
+shape = SubResource("RectangleShape2D_qggpr")
+
+[node name="Portal" parent="KillZone" unique_id=1574698020 instance=ExtResource("4_qggpr")]
+position = Vector2(1954, -925)
+next_scene_path = "uid://w8pxjnkv06yw"
+
+[node name="Chest" parent="." unique_id=831733411 instance=ExtResource("5_wv2pt")]
+position = Vector2(2415, -969)

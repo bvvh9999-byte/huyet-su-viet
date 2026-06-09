@@ -105,6 +105,12 @@ func _on_vật_phẩm_item_activated(index):
 			
 	elif ten_vat_pham == "Lá Bùa Hồi Sinh":
 		print("=> Lá bùa này sẽ tự kích hoạt khi bạn chết!")
+		
+	elif ten_vat_pham == "Áo Choàng Thánh":
+		Global.max_hp += 100 # Tăng hẳn 100 máu tối đa!
+		Global.player_hp = Global.max_hp # Hồi đầy máu luôn
+		print("=> ĐÃ MẶC ÁO CHOÀNG! Máu tối đa tăng lên ", Global.max_hp)
+		da_su_dung_thanh_cong = true
 	
 	if da_su_dung_thanh_cong:
 		Global.kho_vat_pham.remove_at(index)
