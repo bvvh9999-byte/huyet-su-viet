@@ -15,6 +15,7 @@ size = Vector2(221, 20)
 bg_color = Color(0.95616275, 0.86935836, 0.0881184, 1)
 
 [node name="Player" type="CharacterBody2D" unique_id=562729849]
+z_index = 10
 collision_layer = 2
 script = ExtResource("1_onrkg")
 
