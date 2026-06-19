@@ -8,13 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://bqxjhxikt6jf1" path="res://Assets/map-Photoroom.png" id="6_axtly"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fj7yv"]
-size = Vector2(3737, 407.5)
+size = Vector2(3737, 45.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ar73u"]
-size = Vector2(589.875, 92)
+size = Vector2(589.875, 69)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ytxjv"]
-size = Vector2(1618.5, 644)
+size = Vector2(1618.5, 61)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qggpr"]
 size = Vector2(4275, 131.25)
@@ -3118,11 +3118,11 @@ position = Vector2(-2, 0)
 [node name="Ground" type="StaticBody2D" parent="." unique_id=105521894]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=1900657024]
-position = Vector2(-714.5, 203)
+position = Vector2(-714.5, 22.125)
 shape = SubResource("RectangleShape2D_fj7yv")
 
 [node name="Player" parent="." unique_id=562729849 instance=ExtResource("1_ktidu")]
-position = Vector2(-2383, -77)
+position = Vector2(-2654, -265)
 
 [node name="Platform" type="StaticBody2D" parent="." unique_id=668247387]
 
@@ -3141,7 +3141,7 @@ one_way_collision = true
 [node name="Platform3" type="StaticBody2D" parent="." unique_id=136925203]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform3" unique_id=1112391113]
-position = Vector2(68.0625, -315)
+position = Vector2(68.0625, -326.5)
 shape = SubResource("RectangleShape2D_ar73u")
 one_way_collision = true
 
@@ -3153,7 +3153,7 @@ position = Vector2(-1940, -1)
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pillar" unique_id=1657049957]
-position = Vector2(4255, -525)
+position = Vector2(4255, -816.5)
 shape = SubResource("RectangleShape2D_ytxjv")
 
 [node name="CrumblingPlatform2" parent="." unique_id=1016033467 instance=ExtResource("2_rr8tv")]
@@ -3171,7 +3171,7 @@ collision_mask = 2
 script = ExtResource("3_ytxjv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone" unique_id=1868339848]
-position = Vector2(1702, 346)
+position = Vector2(1031, 130)
 shape = SubResource("RectangleShape2D_qggpr")
 
 [node name="Portal" parent="KillZone" unique_id=1574698020 instance=ExtResource("4_qggpr")]

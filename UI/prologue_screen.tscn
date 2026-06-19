@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://sry26g4j8kbu"]
+
+[ext_resource type="Script" uid="uid://cp50iqy3lsura" path="res://UI/prologue_screen.gd" id="1_mymen"]
+[ext_resource type="Texture2D" uid="uid://b4q4a6n0mblwy" path="res://Assets/background.png" id="2_im456"]
+
+[node name="PrologueScreen" type="Control" unique_id=1059480754]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mymen")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2040625737]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_im456")
+expand_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=287238419]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.49803922)
+
+[node name="LblText" type="Label" parent="." unique_id=1432262739]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -174.0
+offset_top = -119.0
+offset_right = 148.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="TextTimer" type="Timer" parent="." unique_id=40626328]
+wait_time = 0.05

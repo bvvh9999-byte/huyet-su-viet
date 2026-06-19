@@ -1,9 +1,111 @@
 [gd_scene format=3 uid="uid://cup8chk8k2q1i"]
 
 [ext_resource type="Script" uid="uid://c3oymkedu6xuy" path="res://Characters/player.gd" id="1_onrkg"]
-[ext_resource type="Texture2D" uid="uid://cok6rypfiw0aq" path="res://icon.svg" id="2_i3pqv"]
+[ext_resource type="Texture2D" uid="uid://0scxhh2arp2v" path="res://Assets/player_sprite.png" id="3_4m0gv"]
 [ext_resource type="AudioStream" uid="uid://bje0qij8rh2gt" path="res://Assets/dragon-studio-violent-sword-slice-393839.mp3" id="3_vb825"]
 [ext_resource type="AudioStream" uid="uid://be57ovxd5ixuh" path="res://Assets/game_over.mp3" id="4_65n15"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l48on"]
+atlas = ExtResource("3_4m0gv")
+region = Rect2(0, 408, 200, 204)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4m0gv"]
+atlas = ExtResource("3_4m0gv")
+region = Rect2(200, 408, 200, 204)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p728j"]
+atlas = ExtResource("3_4m0gv")
+region = Rect2(400, 408, 200, 204)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5slg2"]
+atlas = ExtResource("3_4m0gv")
+region = Rect2(600, 408, 200, 204)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbmiu"]
+atlas = ExtResource("3_4m0gv")
+region = Rect2(800, 408, 200, 204)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3rah"]
+atlas = ExtResource("3_4m0gv")
+region = Rect2(1000, 408, 200, 204)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4gpq"]
+atlas = ExtResource("3_4m0gv")
+region = Rect2(1200, 408, 200, 204)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qaj4"]
+atlas = ExtResource("3_4m0gv")
+region = Rect2(600, 0, 200, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65n15"]
+atlas = ExtResource("3_4m0gv")
+region = Rect2(600, 220, 200, 220)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_642pg"]
+atlas = ExtResource("3_4m0gv")
+region = Rect2(800, 220, 200, 220)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6x5r"]
+atlas = ExtResource("3_4m0gv")
+region = Rect2(1000, 220, 200, 220)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22qw1"]
+atlas = ExtResource("3_4m0gv")
+region = Rect2(1200, 220, 200, 220)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y0e2x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l48on")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4m0gv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p728j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5slg2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbmiu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3rah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4gpq")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0qaj4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65n15")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_642pg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6x5r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_22qw1")
+}],
+"loop": true,
+"name": &"run",
+"speed": 12.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqtel"]
 size = Vector2(131, 129)
@@ -16,11 +118,16 @@ bg_color = Color(0.95616275, 0.86935836, 0.0881184, 1)
 
 [node name="Player" type="CharacterBody2D" unique_id=562729849]
 z_index = 10
+texture_filter = 1
 collision_layer = 2
 script = ExtResource("1_onrkg")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1055669959]
-texture = ExtResource("2_i3pqv")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1359831875]
+position = Vector2(-1.4999971, -0.99999714)
+scale = Vector2(0.665, 0.62745094)
+sprite_frames = SubResource("SpriteFrames_y0e2x")
+animation = &"run"
+frame_progress = 0.7946205
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=437195861]
 position = Vector2(-0.5, -1.5)
@@ -37,13 +144,6 @@ collision_mask = 255
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SwordHitbox" unique_id=686420100]
 position = Vector2(176, 0)
 shape = SubResource("RectangleShape2D_sweqy")
-
-[node name="ColorRect" type="ColorRect" parent="SwordHitbox" unique_id=1900265978]
-offset_left = 66.0
-offset_top = -10.0
-offset_right = 287.0
-offset_bottom = 11.0
-color = Color(1, 0.029999971, 0.029999971, 1)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=669673669]
 position_smoothing_enabled = true

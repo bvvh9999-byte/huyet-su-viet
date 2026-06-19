@@ -4,7 +4,7 @@ extends CharacterBody2D
 # THÔNG SỐ CƠ BẢN
 # ==========================================
 @export var SPEED = 200.0
-@export var JUMP_VELOCITY = -800.0
+@export var JUMP_VELOCITY = -400.0
 @export var DASH_SPEED = 600.0
 
 var is_dashing = false
@@ -12,20 +12,17 @@ var is_attacking = false
 var facing_right = true
 
 # ==========================================
-# KẾT NỐI NODE CON & ÂM THANH
+# KẾT NỐI GIAO DIỆN (UI) VÀ NODE
 # ==========================================
-@onready var sprite = $Sprite2D
+@onready var sprite = $Sprite2D # Giờ đây nó là AnimatedSprite2D
 @onready var dash_timer = $DashTimer
 @onready var sword_hitbox = $SwordHitbox
-@onready var sword_visual = $SwordHitbox/ColorRect
 
-# Máy phát âm thanh (Nhớ tạo 2 Node AudioStreamPlayer tên này trong Scene nhé)
+# CÁC MÁY PHÁT ÂM THANH
 @onready var sound_chop = $SoundChop 
 @onready var sound_die = $SoundDie
 
-# ==========================================
-# KẾT NỐI GIAO DIỆN (UI)
-# ==========================================
+# HUD trên màn hình
 @onready var health_bar = $CanvasLayer/HealthBar
 @onready var exp_bar = $CanvasLayer/ExpBar
 @onready var quest_tracker = $CanvasLayer/QuestTracker 
@@ -40,13 +37,11 @@ var profile_instance = null
 var skill_tree_instance = null 
 
 func _ready():
-	# Ép Player luôn hoạt động để bắt phím khi Pause
 	self.process_mode = Node.PROCESS_MODE_ALWAYS
 	
 	sword_hitbox.body_entered.connect(_on_sword_hit_something)
 	dash_timer.timeout.connect(_on_dash_timer_timeout)
 	
-	sword_visual.visible = false
 	sword_hitbox.monitoring = false
 	
 	health_bar.max_value = Global.max_hp
@@ -59,7 +54,6 @@ func _ready():
 # BẮT BÀN PHÍM (MIỄN NHIỄM VỚI PAUSE)
 # ==========================================
 func _unhandled_input(event):
-	# 1. BẤM PHÍM MỞ TÚI ĐỒ (Tab / I)
 	if event.is_action_pressed("open_profile"):
 		if profile_instance == null:
 			if profile_scene:
@@ -71,7 +65,6 @@ func _unhandled_input(event):
 			profile_instance = null
 			get_tree().paused = false 
 
-	# 2. BẤM PHÍM MỞ CÂY KỸ NĂNG (V / C / K)
 	if event.is_action_pressed("open_skill"):
 		if skill_tree_instance == null:
 			if skill_tree_scene:
@@ -84,10 +77,9 @@ func _unhandled_input(event):
 			get_tree().paused = false 
 
 # ==========================================
-# HỆ THỐNG VẬT LÝ VÀ CHẠY NHẢY 
+# HỆ THỐNG VẬT LÝ, CHẠY NHẢY & ANIMATION
 # ==========================================
 func _physics_process(delta):
-	# Khóa di chuyển khi đang mở bảng
 	if get_tree().paused:
 		return 
 		
@@ -98,25 +90,34 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
+	# Bấm chém (J)
 	if Input.is_action_just_pressed("attack") and not is_attacking and is_on_floor():
 		attack()
 		return
 
+	# Đang chém thì trượt dừng lại, KHÔNG ĐỔI ANIMATION CHẠY
 	if is_attacking:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		move_and_slide()
 		return
 
+	# Bấm Nhảy (Space)
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
+	# Bấm Lướt (K / Shift)
 	if Input.is_action_just_pressed("dash") and is_on_floor():
 		start_dash()
 		return
 
+	# Trái phải (A, D)
 	var direction = Input.get_axis("move_left", "move_right")
 	if direction:
 		velocity.x = direction * SPEED
+		
+		# 👉 BẬT ANIMATION CHẠY
+		sprite.play("run")
+		
 		if direction > 0:
 			sprite.flip_h = false
 			facing_right = true
@@ -127,10 +128,11 @@ func _physics_process(delta):
 			sword_hitbox.scale.x = -1
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+		# 👉 BẬT ANIMATION ĐỨNG IM
+		sprite.play("idle")
 
 	move_and_slide()
 	
-	# Cập nhật chữ Nhiệm Vụ liên tục
 	if quest_tracker != null:
 		var hien_thi_chu = ""
 		for ma_nv in Global.danh_sach_nhiem_vu:
@@ -144,10 +146,11 @@ func _physics_process(delta):
 # ==========================================
 func attack():
 	is_attacking = true
-	sword_visual.visible = true
 	sword_hitbox.monitoring = true 
 	
-	# Phát âm thanh chém
+	# 👉 BẬT ANIMATION CHÉM
+	sprite.play("attack")
+	
 	if sound_chop and sound_chop.stream != null:
 		sound_chop.play()
 	
@@ -156,10 +159,8 @@ func attack():
 	var bodies = sword_hitbox.get_overlapping_bodies()
 	for body in bodies:
 		if body.has_method("take_damage") and body != self:
-			
 			var tong_sat_thuong = 10 + Global.bonus_damage 
 			
-			# TÁC DỤNG 1: SONG KIẾM LIÊN HOÀN (Chém 2 nhát)
 			if Global.skill_song_kiem:
 				body.take_damage(tong_sat_thuong)
 				await get_tree().create_timer(0.05).timeout 
@@ -167,20 +168,17 @@ func attack():
 			else:
 				body.take_damage(tong_sat_thuong)
 				
-			# TÁC DỤNG 2: HÀO KHÍ ĐÔNG A (Hút máu)
 			if Global.skill_hao_khi:
 				Global.player_hp += 5 
 				if Global.player_hp > Global.max_hp: Global.player_hp = Global.max_hp
 				health_bar.value = Global.player_hp
 			
-	# TÁC DỤNG 3: TĂNG TỐC ĐÁNH (Vung kiếm nhanh hơn)
 	var thoi_gian_vung_kiem = 0.2
 	if Global.skill_tang_toc_danh:
 		thoi_gian_vung_kiem = 0.1 
 		
 	await get_tree().create_timer(thoi_gian_vung_kiem).timeout
 	sword_hitbox.monitoring = false
-	sword_visual.visible = false
 	is_attacking = false
 
 func _on_sword_hit_something(_body):
@@ -189,6 +187,10 @@ func _on_sword_hit_something(_body):
 func start_dash():
 	is_dashing = true
 	velocity.y = 0
+	
+	# 👉 LÚC LƯỚT THÌ ĐỔI THÀNH HÌNH IDLE CHO NGẦU
+	sprite.play("idle") 
+	
 	if facing_right: velocity.x = DASH_SPEED
 	else: velocity.x = -DASH_SPEED
 	dash_timer.start()
@@ -208,7 +210,6 @@ func take_damage(amount):
 	sprite.modulate = Color(1, 1, 1)
 	
 	if Global.player_hp <= 0:
-		# Phát âm thanh chết
 		if sound_die and not sound_die.playing:
 			sound_die.process_mode = Node.PROCESS_MODE_ALWAYS
 			sound_die.play()
@@ -226,8 +227,7 @@ func gain_exp(amount):
 	
 	if Global.player_exp >= Global.exp_to_next_level:
 		Global.player_level += 1
-		Global.diem_ky_nang += 1 # Cho 1 Điểm SP để học Skill
-		
+		Global.diem_ky_nang += 1 
 		Global.player_exp -= Global.exp_to_next_level 
 		Global.exp_to_next_level += 50 
 		

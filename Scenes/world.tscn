@@ -3111,7 +3111,7 @@ sources/0 = SubResource("TileSetAtlasSource_5v1tr")
 next_scene_path = "uid://w8pxjnkv06yw"
 
 [node name="Player" parent="." unique_id=562729849 instance=ExtResource("1_5a7ea")]
-position = Vector2(-1128, -469)
+position = Vector2(-3153, -50)
 
 [node name="Enemy" parent="." unique_id=2053603259 instance=ExtResource("2_8j60k")]
 position = Vector2(-1220, -56)
