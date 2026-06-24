@@ -1,39 +1,44 @@
 [gd_scene format=3 uid="uid://2txrdva82ptu"]
 
 [ext_resource type="Script" uid="uid://c4r5n8u6f3epp" path="res://UI/level_up_screen.gd" id="1_4wurp"]
+[ext_resource type="Texture2D" uid="uid://beduq0n2kdes0" path="res://Assets/levelup.png" id="2_x353h"]
+[ext_resource type="FontFile" uid="uid://d16xwi6nhgcyy" path="res://font/VNI_THUPHAP.TTF" id="3_v45y7"]
 
 [node name="LevelUpScreen" type="CanvasLayer" unique_id=1685285447]
 process_mode = 3
 script = ExtResource("1_4wurp")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1973537559]
-offset_right = 1153.0
-offset_bottom = 649.0
-color = Color(0, 0, 0, 0.3137255)
+[node name="TextureRect" type="TextureRect" parent="." unique_id=104340632]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_x353h")
+expand_mode = 1
 
-[node name="Label" type="Label" parent="ColorRect" unique_id=1584437787]
-layout_mode = 0
-offset_left = 420.0
-offset_top = 119.0
-offset_right = 734.0
-offset_bottom = 142.0
-text = "CHÚC MỪNG LÊN CẤP! CHỌN 1 KỸ NĂNG"
+[node name="Label" type="Label" parent="." unique_id=1584437787]
+offset_left = 482.0
+offset_top = 165.0
+offset_right = 749.0
+offset_bottom = 249.0
+theme_override_fonts/font = ExtResource("3_v45y7")
+theme_override_font_sizes/font_size = 40
+text = "Upgrade Skill"
 
-[node name="Button" type="Button" parent="ColorRect" unique_id=878783366]
-layout_mode = 0
-offset_left = 174.0
-offset_top = 214.0
-offset_right = 494.0
-offset_bottom = 319.0
+[node name="Button" type="Button" parent="." unique_id=878783366]
+offset_left = 429.0
+offset_top = 335.0
+offset_right = 749.0
+offset_bottom = 440.0
 text = "+10 SÁT THƯƠNG KIẾM"
 
-[node name="Button2" type="Button" parent="ColorRect" unique_id=263665185]
-layout_mode = 0
-offset_left = 634.0
-offset_top = 219.0
-offset_right = 948.0
-offset_bottom = 317.0
+[node name="Button2" type="Button" parent="." unique_id=263665185]
+offset_left = 436.0
+offset_top = 488.0
+offset_right = 750.0
+offset_bottom = 586.0
 text = "+50 MÁU TỐI ĐA"
 
-[connection signal="pressed" from="ColorRect/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="ColorRect/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

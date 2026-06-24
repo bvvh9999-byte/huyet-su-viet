@@ -1,6 +1,20 @@
 [gd_scene format=3 uid="uid://ce13ersapieq1"]
 
 [ext_resource type="Script" uid="uid://cochv8ju6ti6k" path="res://UI/main_menu.gd" id="1_p8ccj"]
+[ext_resource type="Texture2D" uid="uid://quu27hsavepi" path="res://Assets/main menu.png" id="2_tk8dj"]
+[ext_resource type="FontFile" uid="uid://d16xwi6nhgcyy" path="res://font/VNI_THUPHAP.TTF" id="3_d8nwk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pj4o1"]
+bg_color = Color(0.17, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.63, 0.62180996, 0.13860002, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="MainMenu" type="Control" unique_id=2033471490]
 layout_mode = 3
@@ -11,20 +25,28 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_p8ccj")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=444849154]
-layout_mode = 0
-offset_right = 1153.0
-offset_bottom = 650.0
-color = Color(0, 0, 0, 1)
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1945360171]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_tk8dj")
+expand_mode = 1
 
 [node name="Label" type="Label" parent="." unique_id=145283622]
 layout_mode = 0
-offset_left = 356.0
-offset_top = 160.0
-offset_right = 801.0
-offset_bottom = 243.0
-theme_override_colors/font_color = Color(1, 0.00999999, 0.00999999, 1)
-theme_override_font_sizes/font_size = 60
+offset_left = 298.0
+offset_top = 113.0
+offset_right = 821.0
+offset_bottom = 221.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("3_d8nwk")
+theme_override_font_sizes/font_size = 80
 text = " HUYẾT SỬ VIỆT"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=180396516]
@@ -37,11 +59,17 @@ offset_bottom = 352.0
 [node name="BtnPlay" type="Button" parent="VBoxContainer" unique_id=688718555]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_pj4o1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pj4o1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pj4o1")
 text = "BẮT ĐẦU HÀNH TRÌNH"
 
-[node name="BtnQuit" type="Button" parent="VBoxContainer" unique_id=706226245]
+[node name="BtnQuit" type="Button" parent="VBoxContainer" unique_id=548879522]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_pj4o1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pj4o1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pj4o1")
 text = "THOÁT TRÒ CHƠI"
 
 [connection signal="pressed" from="VBoxContainer/BtnPlay" to="." method="_on_btn_play_pressed"]

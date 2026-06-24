@@ -1,86 +1,110 @@
 [gd_scene format=3 uid="uid://m8koj8e4s5qf"]
 
 [ext_resource type="Script" uid="uid://j7ftykjo2ql" path="res://UI/profile_screen.gd" id="1_118bj"]
+[ext_resource type="Texture2D" uid="uid://dmt1rtxxhgv4t" path="res://Assets/profile.png" id="2_0pgo0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1rl7o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hefse"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_btvgj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0pgo0"]
 
 [node name="ProfileScreen" type="CanvasLayer" unique_id=2094324975]
 process_mode = 3
 layer = 100
 script = ExtResource("1_118bj")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1394801316]
-offset_right = 1151.0
-offset_bottom = 643.0
-color = Color(0, 0, 0, 0.4392157)
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1156359904]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_0pgo0")
+expand_mode = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect" unique_id=604511123]
-layout_mode = 0
-offset_right = 1150.0
-offset_bottom = 647.0
-theme_override_constants/separation = 50
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=604511123]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
 
-[node name="StatsPanel" type="VBoxContainer" parent="ColorRect/HBoxContainer" unique_id=1466307090]
+[node name="StatsPanel" type="VBoxContainer" parent="HBoxContainer" unique_id=1466307090]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.8
 
-[node name="LblLevel" type="Label" parent="ColorRect/HBoxContainer/StatsPanel" unique_id=210420622]
+[node name="LblLevel" type="Label" parent="HBoxContainer/StatsPanel" unique_id=210420622]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Level"
 
-[node name="LblHP" type="Label" parent="ColorRect/HBoxContainer/StatsPanel" unique_id=1425171664]
+[node name="LblHP" type="Label" parent="HBoxContainer/StatsPanel" unique_id=1425171664]
 unique_name_in_owner = true
 layout_mode = 2
 text = "HP"
 
-[node name="LblDamage" type="Label" parent="ColorRect/HBoxContainer/StatsPanel" unique_id=1974290977]
+[node name="LblDamage" type="Label" parent="HBoxContainer/StatsPanel" unique_id=1974290977]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Damage"
 
-[node name="LblSpeed" type="Label" parent="ColorRect/HBoxContainer/StatsPanel" unique_id=232715918]
+[node name="LblSpeed" type="Label" parent="HBoxContainer/StatsPanel" unique_id=232715918]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Speed"
 
-[node name="LblAtkSpeed" type="Label" parent="ColorRect/HBoxContainer/StatsPanel" unique_id=625114981]
+[node name="LblAtkSpeed" type="Label" parent="HBoxContainer/StatsPanel" unique_id=625114981]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Tốc vung kiếm: Bìng thường"
 
-[node name="InventoryTabs" type="TabContainer" parent="ColorRect/HBoxContainer" unique_id=1955613237]
+[node name="InventoryTabs" type="TabContainer" parent="HBoxContainer" unique_id=1955613237]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.8
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1rl7o")
 current_tab = 0
 
-[node name="Vũ Khí" type="ItemList" parent="ColorRect/HBoxContainer/InventoryTabs" unique_id=2061013361]
+[node name="Vũ Khí" type="ItemList" parent="HBoxContainer/InventoryTabs" unique_id=2061013361]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_hefse")
 metadata/_tab_index = 0
 
-[node name="Vật Phẩm" type="ItemList" parent="ColorRect/HBoxContainer/InventoryTabs" unique_id=2084992887]
+[node name="Vật Phẩm" type="ItemList" parent="HBoxContainer/InventoryTabs" unique_id=2084992887]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_btvgj")
 metadata/_tab_index = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/HBoxContainer" unique_id=874492682]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=874492682]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 20
 
-[node name="BtnWeapon" type="Button" parent="ColorRect/HBoxContainer/VBoxContainer" unique_id=858874626]
+[node name="BtnWeapon" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=858874626]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0pgo0")
 
-[node name="BtnArmor" type="Button" parent="ColorRect/HBoxContainer/VBoxContainer" unique_id=1097278241]
+[node name="BtnArmor" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=1097278241]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0pgo0")
 
-[node name="BtnAccessory" type="Button" parent="ColorRect/HBoxContainer/VBoxContainer" unique_id=2020101378]
+[node name="BtnAccessory" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=2020101378]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0pgo0")
 
-[connection signal="item_activated" from="ColorRect/HBoxContainer/InventoryTabs/Vũ Khí" to="." method="_on_vũ_khí_item_activated"]
-[connection signal="item_activated" from="ColorRect/HBoxContainer/InventoryTabs/Vật Phẩm" to="." method="_on_vật_phẩm_item_activated"]
+[connection signal="item_activated" from="HBoxContainer/InventoryTabs/Vũ Khí" to="." method="_on_vũ_khí_item_activated"]
+[connection signal="item_activated" from="HBoxContainer/InventoryTabs/Vật Phẩm" to="." method="_on_vật_phẩm_item_activated"]
