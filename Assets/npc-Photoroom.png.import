@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjbhwrvott4qp"
-path="res://.godot/imported/idle.png-345bd841398ecb5f0be76f8faade9523.ctex"
+uid="uid://bt440cme3csrk"
+path="res://.godot/imported/npc-Photoroom.png-2bd3cf87c76cddbb1cb4d44aa871956a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://idle.png"
-dest_files=["res://.godot/imported/idle.png-345bd841398ecb5f0be76f8faade9523.ctex"]
+source_file="res://Assets/npc-Photoroom.png"
+dest_files=["res://.godot/imported/npc-Photoroom.png-2bd3cf87c76cddbb1cb4d44aa871956a.ctex"]
 
 [params]
 

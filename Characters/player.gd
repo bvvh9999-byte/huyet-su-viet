@@ -4,7 +4,7 @@ extends CharacterBody2D
 # THÔNG SỐ CƠ BẢN
 # ==========================================
 @export var SPEED = 200.0
-@export var JUMP_VELOCITY = -400.0
+@export var JUMP_VELOCITY = -800.0
 @export var DASH_SPEED = 600.0
 
 var is_dashing = false

@@ -1,7 +1,27 @@
 [gd_scene format=3 uid="uid://c40504xanyv5j"]
 
 [ext_resource type="Script" uid="uid://bb5anlj4oc45q" path="res://Characters/npc.gd" id="1_xxcha"]
-[ext_resource type="Texture2D" uid="uid://cok6rypfiw0aq" path="res://icon.svg" id="2_kh24r"]
+[ext_resource type="Texture2D" uid="uid://bt440cme3csrk" path="res://Assets/npc-Photoroom.png" id="2_32lk6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ybb6"]
+atlas = ExtResource("2_32lk6")
+region = Rect2(600, 0, 200, 224)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1vivr"]
+animations = [{
+"frames": [],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ybb6")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ul7y6"]
 radius = 167.19151
@@ -11,11 +31,13 @@ collision_layer = 0
 collision_mask = 3
 script = ExtResource("1_xxcha")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2074882076]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=200229879]
 modulate = Color(0.94, 0.81028, 0.29140002, 1)
-texture = ExtResource("2_kh24r")
+sprite_frames = SubResource("SpriteFrames_1vivr")
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1824611293]
+position = Vector2(-8, -4)
 shape = SubResource("CircleShape2D_ul7y6")
 
 [node name="Label" type="Label" parent="." unique_id=277691107]
