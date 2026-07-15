@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://6ks0bakpoo88"]
 
-[ext_resource type="Script" uid="uid://c4y06ol3a154p" path="res://Props/cursed_chest.gd" id="1_uk4l4"]
+[ext_resource type="Script" uid="uid://c4y06ol3a154p" path="res://Scripts/cursed_chest.gd" id="1_uk4l4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2wljv"]
 size = Vector2(206, 112)

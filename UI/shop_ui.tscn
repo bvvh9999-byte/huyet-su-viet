@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://g6jlitlo8w2"]
 
-[ext_resource type="Script" uid="uid://mmf1h3mvaxi4" path="res://UI/shop_ui.gd" id="1_r8gjt"]
+[ext_resource type="Script" uid="uid://mmf1h3mvaxi4" path="res://Scripts/shop_ui.gd" id="1_r8gjt"]
 
 [node name="ShopUI" type="CanvasLayer" unique_id=536540593]
 process_mode = 3

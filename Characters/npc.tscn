@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c40504xanyv5j"]
 
-[ext_resource type="Script" uid="uid://bb5anlj4oc45q" path="res://Characters/npc.gd" id="1_xxcha"]
+[ext_resource type="Script" uid="uid://bb5anlj4oc45q" path="res://Scripts/npc.gd" id="1_xxcha"]
 [ext_resource type="Texture2D" uid="uid://bt440cme3csrk" path="res://Assets/npc-Photoroom.png" id="2_32lk6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6ybb6"]
@@ -41,12 +41,14 @@ position = Vector2(-8, -4)
 shape = SubResource("CircleShape2D_ul7y6")
 
 [node name="Label" type="Label" parent="." unique_id=277691107]
-offset_left = -109.0
-offset_top = -115.0
-offset_right = 117.0
-offset_bottom = -92.0
+offset_left = -157.0
+offset_top = -112.0
+offset_right = 157.0
+offset_bottom = -89.0
 text = "Ấn E để trò chuyện"
 horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 2
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

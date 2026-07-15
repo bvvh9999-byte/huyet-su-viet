@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bfsk6ebasvvoe"]
 
-[ext_resource type="Script" uid="uid://bvfw4q3422uos" path="res://Props/crumbling_platform.gd" id="1_b7pql"]
+[ext_resource type="Script" uid="uid://bvfw4q3422uos" path="res://Scripts/crumbling_platform.gd" id="1_b7pql"]
 [ext_resource type="Texture2D" uid="uid://bqxjhxikt6jf1" path="res://Assets/map-Photoroom.png" id="2_rkqwh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rkqwh"]

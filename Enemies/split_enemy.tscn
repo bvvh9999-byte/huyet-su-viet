@@ -1,10 +1,25 @@
 [gd_scene format=3 uid="uid://cesenweeqc6b6"]
 
-[ext_resource type="Script" uid="uid://blby7jkjrmr0q" path="res://Enemies/split_enemy.gd" id="1_ava1s"]
-[ext_resource type="Texture2D" uid="uid://cok6rypfiw0aq" path="res://icon.svg" id="2_p1cvx"]
+[ext_resource type="Script" uid="uid://blby7jkjrmr0q" path="res://Scripts/split_enemy.gd" id="1_ava1s"]
+[ext_resource type="Texture2D" uid="uid://c2jw3lcvgexmf" path="res://Assets/mini boss idle (1).png" id="2_ava1s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1cvx"]
+atlas = ExtResource("2_ava1s")
+region = Rect2(0, 0, 421, 280)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1vivr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p1cvx")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iifgy"]
-size = Vector2(130, 131)
+size = Vector2(187.33334, 212)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4gyqm"]
 bg_color = Color(0.6, 0, 0, 1)
@@ -20,19 +35,21 @@ scale = Vector2(1.5, 1.5)
 collision_layer = 4
 script = ExtResource("1_ava1s")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1156274997]
-modulate = Color(0.05, 0.05, 0.05, 1)
-texture = ExtResource("2_p1cvx")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=725578916]
+position = Vector2(27.000004, 12.333329)
+scale = Vector2(0.46080765, 0.7642857)
+sprite_frames = SubResource("SpriteFrames_1vivr")
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1361683223]
-position = Vector2(-1, -1.5)
+position = Vector2(27.666668, 10)
 shape = SubResource("RectangleShape2D_iifgy")
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=1350781569]
-offset_left = -91.0
-offset_top = -118.0
-offset_right = 91.0
-offset_bottom = -86.0
+offset_left = -64.666664
+offset_top = -138.66666
+offset_right = 117.333336
+offset_bottom = -106.66666
 theme_override_styles/fill = SubResource("StyleBoxFlat_4gyqm")
 max_value = 30.0
 value = 30.0
@@ -42,13 +59,14 @@ show_percentage = false
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=1437407575]
+position = Vector2(-1.3333435, 0)
 shape = SubResource("CircleShape2D_4gyqm")
 
 [node name="AttackArea" type="Area2D" parent="." unique_id=1359489663]
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=784892454]
-position = Vector2(157.5, -1)
+position = Vector2(213.33334, 2.6666667)
 shape = SubResource("RectangleShape2D_qi2p4")
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=2057787483]

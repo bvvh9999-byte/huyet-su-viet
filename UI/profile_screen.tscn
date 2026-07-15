@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://m8koj8e4s5qf"]
 
-[ext_resource type="Script" uid="uid://j7ftykjo2ql" path="res://UI/profile_screen.gd" id="1_118bj"]
+[ext_resource type="Script" uid="uid://j7ftykjo2ql" path="res://Scripts/profile_screen.gd" id="1_118bj"]
 [ext_resource type="Texture2D" uid="uid://dmt1rtxxhgv4t" path="res://Assets/profile.png" id="2_0pgo0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1rl7o"]

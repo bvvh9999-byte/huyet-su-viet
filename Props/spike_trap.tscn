@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://u1s0g2pq0sgj"]
 
-[ext_resource type="Script" uid="uid://by8mup4ggmv8q" path="res://Props/spike_trap.gd" id="1_43npg"]
+[ext_resource type="Script" uid="uid://by8mup4ggmv8q" path="res://Scripts/spike_trap.gd" id="1_43npg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3vgcn"]
 size = Vector2(453, 29)

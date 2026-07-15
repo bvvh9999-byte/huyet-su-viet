@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://sry26g4j8kbu"]
 
-[ext_resource type="Script" uid="uid://cp50iqy3lsura" path="res://UI/prologue_screen.gd" id="1_mymen"]
+[ext_resource type="Script" uid="uid://cp50iqy3lsura" path="res://Scripts/prologue_screen.gd" id="1_mymen"]
 [ext_resource type="Texture2D" uid="uid://b4q4a6n0mblwy" path="res://Assets/background.png" id="2_im456"]
 
 [node name="PrologueScreen" type="Control" unique_id=1059480754]

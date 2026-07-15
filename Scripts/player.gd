@@ -37,6 +37,8 @@ var profile_instance = null
 var skill_tree_instance = null 
 
 func _ready():
+	add_to_group("Player")
+	
 	self.process_mode = Node.PROCESS_MODE_ALWAYS
 	
 	sword_hitbox.body_entered.connect(_on_sword_hit_something)

@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dhq1gj71053b8"]
 
-[ext_resource type="Script" uid="uid://1pbw2vbq6jqq" path="res://UI/game_over_screen.gd" id="1_50k4i"]
+[ext_resource type="Script" uid="uid://1pbw2vbq6jqq" path="res://Scripts/game_over_screen.gd" id="1_50k4i"]
 [ext_resource type="Texture2D" uid="uid://c556hoj7bxwwc" path="res://Assets/game over.png" id="2_yjwqv"]
-[ext_resource type="FontFile" uid="uid://d16xwi6nhgcyy" path="res://font/VNI_THUPHAP.TTF" id="3_jersm"]
+[ext_resource type="FontFile" uid="uid://d16xwi6nhgcyy" path="res://bo-font-thu-phap-cuc-dep-cho-thiet-ke/VNI_THUPHAP.TTF" id="3_jersm"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8vrlf"]
 

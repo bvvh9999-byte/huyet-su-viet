@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c6txd0s1p0s16"]
 
-[ext_resource type="Script" uid="uid://ceyk1e55jnlqw" path="res://UI/dialogue_box.gd" id="1_v506g"]
+[ext_resource type="Script" uid="uid://ceyk1e55jnlqw" path="res://Scripts/dialogue_box.gd" id="1_v506g"]
 
 [node name="DialogueBox" type="CanvasLayer" unique_id=2112732852]
 process_mode = 3

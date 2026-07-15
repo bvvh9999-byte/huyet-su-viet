@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b2iahd1vr8ybe"]
 
-[ext_resource type="Script" uid="uid://c851im14iupy8" path="res://Props/chest.gd" id="1_fxsxq"]
+[ext_resource type="Script" uid="uid://c851im14iupy8" path="res://Scripts/chest.gd" id="1_fxsxq"]
 [ext_resource type="Texture2D" uid="uid://ckph6nc274eh2" path="res://Assets/chest-Photoroom.png" id="2_2wljv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ihhu3"]

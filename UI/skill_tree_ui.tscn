@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d4m7eaf8uh5g7"]
 
-[ext_resource type="Script" uid="uid://byv68u6v6i7cn" path="res://UI/skill_tree_ui.gd" id="1_amsly"]
+[ext_resource type="Script" uid="uid://byv68u6v6i7cn" path="res://Scripts/skill_tree_ui.gd" id="1_amsly"]
 [ext_resource type="Texture2D" uid="uid://383aqdavn4fn" path="res://Assets/skilltree.png" id="2_12u75"]
 
 [node name="SkillTreeUI" type="CanvasLayer" unique_id=136186376]

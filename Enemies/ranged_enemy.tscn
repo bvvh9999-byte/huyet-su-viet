@@ -1,7 +1,35 @@
 [gd_scene format=3 uid="uid://cdpprrjf7bijh"]
 
-[ext_resource type="Script" uid="uid://fsh0afiw6bl1" path="res://Enemies/ranged_enemy.gd" id="1_klqil"]
-[ext_resource type="Texture2D" uid="uid://cok6rypfiw0aq" path="res://icon.svg" id="2_ius0x"]
+[ext_resource type="Script" uid="uid://fsh0afiw6bl1" path="res://Scripts/ranged_enemy.gd" id="1_klqil"]
+[ext_resource type="Texture2D" uid="uid://8v4e52uwkna4" path="res://Assets/ranged attack 1.png" id="2_ius0x"]
+[ext_resource type="Texture2D" uid="uid://cu3miko2mdm3n" path="res://Assets/ranged enemy idle.png" id="2_klqil"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hyijr"]
+atlas = ExtResource("2_ius0x")
+region = Rect2(0, 0, 632, 280)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ius0x"]
+atlas = ExtResource("2_klqil")
+region = Rect2(0, 0, 316, 280)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1vivr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hyijr")
+}],
+"loop": 1,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ius0x")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iifgy"]
 size = Vector2(130, 131)
@@ -16,9 +44,12 @@ radius = 357.2366
 collision_layer = 4
 script = ExtResource("1_klqil")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1156274997]
-modulate = Color(0.68887454, 1.8770993e-06, 0.36690387, 1)
-texture = ExtResource("2_ius0x")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=925410627]
+modulate = Color(0.69, 0.69, 0.69, 1)
+position = Vector2(-2.4999943, 0.99999714)
+scale = Vector2(0.414557, 0.49999997)
+sprite_frames = SubResource("SpriteFrames_1vivr")
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1361683223]
 position = Vector2(-1, -1.5)
@@ -38,6 +69,7 @@ show_percentage = false
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=1437407575]
+position = Vector2(-1, -3)
 shape = SubResource("CircleShape2D_4gyqm")
 
 [node name="ShootTimer" type="Timer" parent="." unique_id=2057787483]

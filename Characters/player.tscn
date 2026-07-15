@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cup8chk8k2q1i"]
 
-[ext_resource type="Script" uid="uid://c3oymkedu6xuy" path="res://Characters/player.gd" id="1_onrkg"]
+[ext_resource type="Script" uid="uid://c3oymkedu6xuy" path="res://Scripts/player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://0scxhh2arp2v" path="res://Assets/player_sprite.png" id="3_4m0gv"]
 [ext_resource type="Texture2D" uid="uid://cjuk6t8ytj0av" path="res://Assets/run.png" id="3_l48on"]
 [ext_resource type="Texture2D" uid="uid://grf6fhiafst4" path="res://Assets/player attack-Photoroom.png" id="3_p728j"]

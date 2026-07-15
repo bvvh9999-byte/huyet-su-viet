@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://2txrdva82ptu"]
 
-[ext_resource type="Script" uid="uid://c4r5n8u6f3epp" path="res://UI/level_up_screen.gd" id="1_4wurp"]
+[ext_resource type="Script" uid="uid://c4r5n8u6f3epp" path="res://Scripts/level_up_screen.gd" id="1_4wurp"]
 [ext_resource type="Texture2D" uid="uid://beduq0n2kdes0" path="res://Assets/levelup.png" id="2_x353h"]
-[ext_resource type="FontFile" uid="uid://d16xwi6nhgcyy" path="res://font/VNI_THUPHAP.TTF" id="3_v45y7"]
+[ext_resource type="FontFile" uid="uid://d16xwi6nhgcyy" path="res://bo-font-thu-phap-cuc-dep-cho-thiet-ke/VNI_THUPHAP.TTF" id="3_v45y7"]
 
 [node name="LevelUpScreen" type="CanvasLayer" unique_id=1685285447]
 process_mode = 3

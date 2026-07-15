@@ -30,14 +30,50 @@ var trang_bi_day_chuyen = "Chưa có"
 # ==========================================
 # SỔ TAY NHIỆM VỤ
 # ==========================================
+# ==========================================
+# SỔ TAY NHIỆM VỤ & CỐT TRUYỆN (NÂNG CẤP)
+# ==========================================
 var danh_sach_nhiem_vu = {
+	
+	# NHIỆM VỤ Ở WORLD 1
 	"main_01": {
 		"ten": "Khởi Nghĩa",
 		"loai": "Nhiệm Vụ Chính",
 		"trang_thai": 0, 
 		"muc_tieu": 3,
 		"da_lam": 0,
-		"phan_thuong": "Song Kiếm"
+		"phan_thuong": "Song Kiếm",
+		
+		# DÀN THOẠI TRƯỚC KHI NHẬN NHIỆM VỤ (Nhiều câu liên tiếp)
+		"thoai_nhan_nv": [
+			"Ngươi cuối cùng cũng tỉnh lại rồi sao, Hồn Việt?",
+			"Lũ giặc ngoại xâm đang dày xéo quê hương ta.",
+			"Chúng ta không thể ngồi chờ chết được nữa!",
+			"Hãy đi tiêu diệt 3 tên giặc ngoài kia, ta sẽ có thưởng cho ngươi!"
+		],
+		"thoai_dang_lam": "Chưa xong đâu! Ngươi mới diệt được ", # Code sẽ tự ghép số vào
+		"thoai_tra_nv": "Tuyệt vời! Nhận lấy Song Kiếm này và tiếp tục lên đường!",
+		"thoai_ket_thuc": "Lịch sử trông cậy cả vào ngươi..."
+	},
+
+	# NHIỆM VỤ Ở WORLD 2 (Thêm mới)
+	"main_02": {
+		"ten": "Hắc Hóa",
+		"loai": "Nhiệm Vụ Chính",
+		"trang_thai": 0, 
+		"muc_tieu": 5, # Cần giết 5 con quái
+		"da_lam": 0,
+		"phan_thuong": "Huyết Kiếm Truyền Thuyết",
+		
+		"thoai_nhan_nv": [
+			"Khu rừng này tà khí quá nặng...",
+			"Lũ yêu quái đã bị Bóng Đen Lịch Sử hắc hóa hoàn toàn.",
+			"Nếu không ngăn chúng lại, chúng sẽ tràn về làng mất.",
+			"Giúp ta dọn dẹp 5 con quái vật quanh đây nhé!"
+		],
+		"thoai_dang_lam": "Quái vật vẫn còn, ngươi mới giết được ",
+		"thoai_tra_nv": "Làm tốt lắm. Bóng tối đã tạm thời lùi bước. Đây là phần thưởng của ngươi!",
+		"thoai_ket_thuc": "Hãy cẩn thận với cái Rương Nguyền Rủa ở cuối rừng..."
 	}
 }
 

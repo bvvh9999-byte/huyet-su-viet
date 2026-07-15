@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://vl2ch2ivwnxu"]
 
 [ext_resource type="Texture2D" uid="uid://cok6rypfiw0aq" path="res://icon.svg" id="1_jsado"]
-[ext_resource type="Script" uid="uid://saq62kt4nf7q" path="res://Enemies/boss.gd" id="1_mhtxu"]
+[ext_resource type="Script" uid="uid://saq62kt4nf7q" path="res://Scripts/boss.gd" id="1_mhtxu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mhtxu"]
 size = Vector2(235, 210)
