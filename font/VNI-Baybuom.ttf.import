@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://bf6lq1i3x56be"
-path="res://.godot/imported/VNI-Baybuom.ttf-b13842e2a618b05dd2408bfbbbbdec2b.fontdata"
+path="res://.godot/imported/VNI-Baybuom.ttf-56b033df94bde8c695ff04acf9017493.fontdata"
 
 [deps]
 
-source_file="res://bo-font-thu-phap-cuc-dep-cho-thiet-ke/VNI-Baybuom.ttf"
-dest_files=["res://.godot/imported/VNI-Baybuom.ttf-b13842e2a618b05dd2408bfbbbbdec2b.fontdata"]
+source_file="res://font/VNI-Baybuom.ttf"
+dest_files=["res://.godot/imported/VNI-Baybuom.ttf-56b033df94bde8c695ff04acf9017493.fontdata"]
 
 [params]
 

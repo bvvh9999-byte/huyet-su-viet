@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://itijkdlako7q"
-path="res://.godot/imported/VNbrique.TTF-c22d361d2fe48c465e406cfcb3c2b1e8.fontdata"
+path="res://.godot/imported/VNbrique.TTF-b48cc1a92c9788f14decc361cb76f1b8.fontdata"
 
 [deps]
 
-source_file="res://bo-font-thu-phap-cuc-dep-cho-thiet-ke/VNbrique.TTF"
-dest_files=["res://.godot/imported/VNbrique.TTF-c22d361d2fe48c465e406cfcb3c2b1e8.fontdata"]
+source_file="res://font/VNbrique.TTF"
+dest_files=["res://.godot/imported/VNbrique.TTF-b48cc1a92c9788f14decc361cb76f1b8.fontdata"]
 
 [params]
 

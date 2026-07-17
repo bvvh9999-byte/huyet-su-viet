@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://bd238dvopqqcw"
-path="res://.godot/imported/VNI-Trung Kien.TTF-af11d6c6863111a985dba726d9a6589b.fontdata"
+path="res://.godot/imported/VNI-Trung Kien.TTF-9924c98c987506c499cf62609efe5c28.fontdata"
 
 [deps]
 
-source_file="res://bo-font-thu-phap-cuc-dep-cho-thiet-ke/VNI-Trung Kien.TTF"
-dest_files=["res://.godot/imported/VNI-Trung Kien.TTF-af11d6c6863111a985dba726d9a6589b.fontdata"]
+source_file="res://font/VNI-Trung Kien.TTF"
+dest_files=["res://.godot/imported/VNI-Trung Kien.TTF-9924c98c987506c499cf62609efe5c28.fontdata"]
 
 [params]
 

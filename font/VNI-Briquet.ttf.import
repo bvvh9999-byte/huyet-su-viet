@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://ckar8pahueypj"
-path="res://.godot/imported/VNI-Briquet.ttf-38649e54c3ccde0d14111822df995920.fontdata"
+path="res://.godot/imported/VNI-Briquet.ttf-c888f2565383b73e0b6571e3851f0c9e.fontdata"
 
 [deps]
 
-source_file="res://bo-font-thu-phap-cuc-dep-cho-thiet-ke/VNI-Briquet.ttf"
-dest_files=["res://.godot/imported/VNI-Briquet.ttf-38649e54c3ccde0d14111822df995920.fontdata"]
+source_file="res://font/VNI-Briquet.ttf"
+dest_files=["res://.godot/imported/VNI-Briquet.ttf-c888f2565383b73e0b6571e3851f0c9e.fontdata"]
 
 [params]
 

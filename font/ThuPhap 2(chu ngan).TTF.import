@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://chaykhg0fhyea"
-path="res://.godot/imported/ThuPhap 2(chu ngan).TTF-e4b46328eb3e75741662a63dcb8b4b25.fontdata"
+path="res://.godot/imported/ThuPhap 2(chu ngan).TTF-3e9316cdcbbc37a0413e86304acfa329.fontdata"
 
 [deps]
 
-source_file="res://bo-font-thu-phap-cuc-dep-cho-thiet-ke/ThuPhap 2(chu ngan).TTF"
-dest_files=["res://.godot/imported/ThuPhap 2(chu ngan).TTF-e4b46328eb3e75741662a63dcb8b4b25.fontdata"]
+source_file="res://font/ThuPhap 2(chu ngan).TTF"
+dest_files=["res://.godot/imported/ThuPhap 2(chu ngan).TTF-3e9316cdcbbc37a0413e86304acfa329.fontdata"]
 
 [params]
 

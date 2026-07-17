@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://bl2dqpedj2u7e"
-path="res://.godot/imported/vnibriquet.ttf-40251d12999fac64124717d3fa552d6f.fontdata"
+path="res://.godot/imported/vnibriquet.ttf-ff6fdd4928d200caa48c737a2f97e49e.fontdata"
 
 [deps]
 
-source_file="res://bo-font-thu-phap-cuc-dep-cho-thiet-ke/vnibriquet.ttf"
-dest_files=["res://.godot/imported/vnibriquet.ttf-40251d12999fac64124717d3fa552d6f.fontdata"]
+source_file="res://font/vnibriquet.ttf"
+dest_files=["res://.godot/imported/vnibriquet.ttf-ff6fdd4928d200caa48c737a2f97e49e.fontdata"]
 
 [params]
 

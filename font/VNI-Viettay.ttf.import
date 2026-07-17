@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://b0j6lm5elq2uq"
-path="res://.godot/imported/VNI-Viettay.ttf-77290e8007786d9d2dc42eb969c0f6ea.fontdata"
+path="res://.godot/imported/VNI-Viettay.ttf-85ba8357175dee960282e18feb39f046.fontdata"
 
 [deps]
 
-source_file="res://bo-font-thu-phap-cuc-dep-cho-thiet-ke/VNI-Viettay.ttf"
-dest_files=["res://.godot/imported/VNI-Viettay.ttf-77290e8007786d9d2dc42eb969c0f6ea.fontdata"]
+source_file="res://font/VNI-Viettay.ttf"
+dest_files=["res://.godot/imported/VNI-Viettay.ttf-85ba8357175dee960282e18feb39f046.fontdata"]
 
 [params]
 

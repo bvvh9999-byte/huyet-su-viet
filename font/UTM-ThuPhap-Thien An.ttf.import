@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://bgb553ebstnj0"
-path="res://.godot/imported/UTM-ThuPhap-Thien An.ttf-0cb5b09ca577ab362cc8d6350aa6e0ab.fontdata"
+path="res://.godot/imported/UTM-ThuPhap-Thien An.ttf-086177c07efef606a123f2fc273a652b.fontdata"
 
 [deps]
 
-source_file="res://bo-font-thu-phap-cuc-dep-cho-thiet-ke/UTM-ThuPhap-Thien An.ttf"
-dest_files=["res://.godot/imported/UTM-ThuPhap-Thien An.ttf-0cb5b09ca577ab362cc8d6350aa6e0ab.fontdata"]
+source_file="res://font/UTM-ThuPhap-Thien An.ttf"
+dest_files=["res://.godot/imported/UTM-ThuPhap-Thien An.ttf-086177c07efef606a123f2fc273a652b.fontdata"]
 
 [params]
 

@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://cw052ru3vjy2k"
-path="res://.godot/imported/hlbrush3.ttf-1676708f7a8efad3d237a109f5c10d38.fontdata"
+path="res://.godot/imported/hlbrush3.ttf-efd584ebfa20efbbb229bcf5d2c9cfa9.fontdata"
 
 [deps]
 
-source_file="res://bo-font-thu-phap-cuc-dep-cho-thiet-ke/hlbrush3.ttf"
-dest_files=["res://.godot/imported/hlbrush3.ttf-1676708f7a8efad3d237a109f5c10d38.fontdata"]
+source_file="res://font/hlbrush3.ttf"
+dest_files=["res://.godot/imported/hlbrush3.ttf-efd584ebfa20efbbb229bcf5d2c9cfa9.fontdata"]
 
 [params]
 

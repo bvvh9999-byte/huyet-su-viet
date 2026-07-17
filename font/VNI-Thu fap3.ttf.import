@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://dw3yykploabne"
-path="res://.godot/imported/VNI-Thu fap3.ttf-6b31148dea43aa25670ca8c0249212e9.fontdata"
+path="res://.godot/imported/VNI-Thu fap3.ttf-76783c2c1cacea2a3725d260402885a7.fontdata"
 
 [deps]
 
-source_file="res://bo-font-thu-phap-cuc-dep-cho-thiet-ke/VNI-Thu fap3.ttf"
-dest_files=["res://.godot/imported/VNI-Thu fap3.ttf-6b31148dea43aa25670ca8c0249212e9.fontdata"]
+source_file="res://font/VNI-Thu fap3.ttf"
+dest_files=["res://.godot/imported/VNI-Thu fap3.ttf-76783c2c1cacea2a3725d260402885a7.fontdata"]
 
 [params]
 

@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://b17awf0rtygy3"
-path="res://.godot/imported/vnithuphapslogan.ttf-c3a4c274db4d1bf8ec1426833d177191.fontdata"
+path="res://.godot/imported/vnithuphapslogan.ttf-dd23472f09650a6d18392e5609f469ae.fontdata"
 
 [deps]
 
-source_file="res://bo-font-thu-phap-cuc-dep-cho-thiet-ke/vnithuphapslogan.ttf"
-dest_files=["res://.godot/imported/vnithuphapslogan.ttf-c3a4c274db4d1bf8ec1426833d177191.fontdata"]
+source_file="res://font/vnithuphapslogan.ttf"
+dest_files=["res://.godot/imported/vnithuphapslogan.ttf-dd23472f09650a6d18392e5609f469ae.fontdata"]
 
 [params]
 

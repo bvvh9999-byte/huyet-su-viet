@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://bk2clkx6xcfpj"
-path="res://.godot/imported/Vndisney.TTF-671938a18da52912ac4f517c05f5044e.fontdata"
+path="res://.godot/imported/Vndisney.TTF-82453b465e23489a3226dae284f22da3.fontdata"
 
 [deps]
 
-source_file="res://bo-font-thu-phap-cuc-dep-cho-thiet-ke/Vndisney.TTF"
-dest_files=["res://.godot/imported/Vndisney.TTF-671938a18da52912ac4f517c05f5044e.fontdata"]
+source_file="res://font/Vndisney.TTF"
+dest_files=["res://.godot/imported/Vndisney.TTF-82453b465e23489a3226dae284f22da3.fontdata"]
 
 [params]
 

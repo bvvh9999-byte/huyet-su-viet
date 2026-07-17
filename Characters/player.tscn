@@ -185,6 +185,7 @@ offset_top = 60.0
 offset_right = 316.0
 offset_bottom = 87.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_onrkg")
+value = 50.0
 show_percentage = false
 
 [node name="QuestTracker" type="Label" parent="CanvasLayer" unique_id=1581948688]

@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://chatu53gtdo66"
-path="res://.godot/imported/Vongdohl.ttf-bf506c1236136228d5a3d8633e513daf.fontdata"
+path="res://.godot/imported/Vongdohl.ttf-458c318cd1d10219f67c9746263314ee.fontdata"
 
 [deps]
 
-source_file="res://bo-font-thu-phap-cuc-dep-cho-thiet-ke/Vongdohl.ttf"
-dest_files=["res://.godot/imported/Vongdohl.ttf-bf506c1236136228d5a3d8633e513daf.fontdata"]
+source_file="res://font/Vongdohl.ttf"
+dest_files=["res://.godot/imported/Vongdohl.ttf-458c318cd1d10219f67c9746263314ee.fontdata"]
 
 [params]
 

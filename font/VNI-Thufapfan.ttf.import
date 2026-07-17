@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://b5sctaktt5r10"
-path="res://.godot/imported/VNI-Thufapfan.ttf-9241c89a9a1df7a94bf7713c9b479d97.fontdata"
+path="res://.godot/imported/VNI-Thufapfan.ttf-8a6c2097292da24a1c9054cf1429bda3.fontdata"
 
 [deps]
 
-source_file="res://bo-font-thu-phap-cuc-dep-cho-thiet-ke/VNI-Thufapfan.ttf"
-dest_files=["res://.godot/imported/VNI-Thufapfan.ttf-9241c89a9a1df7a94bf7713c9b479d97.fontdata"]
+source_file="res://font/VNI-Thufapfan.ttf"
+dest_files=["res://.godot/imported/VNI-Thufapfan.ttf-8a6c2097292da24a1c9054cf1429bda3.fontdata"]
 
 [params]
 

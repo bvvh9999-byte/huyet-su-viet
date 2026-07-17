@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://ce6ykyhe4dkxo"
-path="res://.godot/imported/vnibaybuom.ttf-1a8c03ceddfef4281992b421bbf8d232.fontdata"
+path="res://.godot/imported/vnibaybuom.ttf-61fc6ceaf4ad413d1ac1a07756c0b5f3.fontdata"
 
 [deps]
 
-source_file="res://bo-font-thu-phap-cuc-dep-cho-thiet-ke/vnibaybuom.ttf"
-dest_files=["res://.godot/imported/vnibaybuom.ttf-1a8c03ceddfef4281992b421bbf8d232.fontdata"]
+source_file="res://font/vnibaybuom.ttf"
+dest_files=["res://.godot/imported/vnibaybuom.ttf-61fc6ceaf4ad413d1ac1a07756c0b5f3.fontdata"]
 
 [params]
 

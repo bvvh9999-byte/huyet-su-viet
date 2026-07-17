@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://k72ommxu8v32"
-path="res://.godot/imported/vniongdo.ttf-027bda3acfb937c127222daa2448a026.fontdata"
+path="res://.godot/imported/vniongdo.ttf-9992cf66c0b57fad850164ffe5556254.fontdata"
 
 [deps]
 
-source_file="res://bo-font-thu-phap-cuc-dep-cho-thiet-ke/vniongdo.ttf"
-dest_files=["res://.godot/imported/vniongdo.ttf-027bda3acfb937c127222daa2448a026.fontdata"]
+source_file="res://font/vniongdo.ttf"
+dest_files=["res://.godot/imported/vniongdo.ttf-9992cf66c0b57fad850164ffe5556254.fontdata"]
 
 [params]
 

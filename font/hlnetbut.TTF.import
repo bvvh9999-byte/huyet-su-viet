@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://doebhgy02qjdn"
-path="res://.godot/imported/hlnetbut.TTF-362906cddd8c703d3df5eb9870c891af.fontdata"
+path="res://.godot/imported/hlnetbut.TTF-897059d747fd4c574035e6292c0e3d08.fontdata"
 
 [deps]
 
-source_file="res://bo-font-thu-phap-cuc-dep-cho-thiet-ke/hlnetbut.TTF"
-dest_files=["res://.godot/imported/hlnetbut.TTF-362906cddd8c703d3df5eb9870c891af.fontdata"]
+source_file="res://font/hlnetbut.TTF"
+dest_files=["res://.godot/imported/hlnetbut.TTF-897059d747fd4c574035e6292c0e3d08.fontdata"]
 
 [params]
 

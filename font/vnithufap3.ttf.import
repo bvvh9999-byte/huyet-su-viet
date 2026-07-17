@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://byharhi0m4nyh"
-path="res://.godot/imported/vnithufap3.ttf-ec16d0537c693a907353bc9c39208f8f.fontdata"
+path="res://.godot/imported/vnithufap3.ttf-e147999c7d6005ef3b2b464343a6c1cc.fontdata"
 
 [deps]
 
-source_file="res://bo-font-thu-phap-cuc-dep-cho-thiet-ke/vnithufap3.ttf"
-dest_files=["res://.godot/imported/vnithufap3.ttf-ec16d0537c693a907353bc9c39208f8f.fontdata"]
+source_file="res://font/vnithufap3.ttf"
+dest_files=["res://.godot/imported/vnithufap3.ttf-e147999c7d6005ef3b2b464343a6c1cc.fontdata"]
 
 [params]
 

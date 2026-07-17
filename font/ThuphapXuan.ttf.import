@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://swumons3w8d1"
-path="res://.godot/imported/ThuphapXuan.ttf-8b1bcc5ec7b556d91dc2802cb645582b.fontdata"
+path="res://.godot/imported/ThuphapXuan.ttf-c8d3c1976f91f2ba94c063eabcf2136d.fontdata"
 
 [deps]
 
-source_file="res://bo-font-thu-phap-cuc-dep-cho-thiet-ke/ThuphapXuan.ttf"
-dest_files=["res://.godot/imported/ThuphapXuan.ttf-8b1bcc5ec7b556d91dc2802cb645582b.fontdata"]
+source_file="res://font/ThuphapXuan.ttf"
+dest_files=["res://.godot/imported/ThuphapXuan.ttf-c8d3c1976f91f2ba94c063eabcf2136d.fontdata"]
 
 [params]
 

@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://caifsi0bsci1x"
-path="res://.godot/imported/Vnitruck.TTF-8a0064cab14526429445341c367398f6.fontdata"
+path="res://.godot/imported/Vnitruck.TTF-494e04e27b71e417f0384c5dd673b88d.fontdata"
 
 [deps]
 
-source_file="res://bo-font-thu-phap-cuc-dep-cho-thiet-ke/Vnitruck.TTF"
-dest_files=["res://.godot/imported/Vnitruck.TTF-8a0064cab14526429445341c367398f6.fontdata"]
+source_file="res://font/Vnitruck.TTF"
+dest_files=["res://.godot/imported/Vnitruck.TTF-494e04e27b71e417f0384c5dd673b88d.fontdata"]
 
 [params]
 

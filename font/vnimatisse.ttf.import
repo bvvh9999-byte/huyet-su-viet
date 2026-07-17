@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://cv0e811s6a3n0"
-path="res://.godot/imported/vnimatisse.ttf-bc4241855d59715b6533a5dc94957221.fontdata"
+path="res://.godot/imported/vnimatisse.ttf-ff737f0876782209c2f579ec3633fed1.fontdata"
 
 [deps]
 
-source_file="res://bo-font-thu-phap-cuc-dep-cho-thiet-ke/vnimatisse.ttf"
-dest_files=["res://.godot/imported/vnimatisse.ttf-bc4241855d59715b6533a5dc94957221.fontdata"]
+source_file="res://font/vnimatisse.ttf"
+dest_files=["res://.godot/imported/vnimatisse.ttf-ff737f0876782209c2f579ec3633fed1.fontdata"]
 
 [params]
 

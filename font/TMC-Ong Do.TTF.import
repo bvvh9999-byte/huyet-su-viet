@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://d2b3q2mieh07"
-path="res://.godot/imported/TMC-Ong Do.TTF-3a2eddb439061c1cb97ea89ea3565019.fontdata"
+path="res://.godot/imported/TMC-Ong Do.TTF-1df53aa222b308be6d6bbee0e81deaa7.fontdata"
 
 [deps]
 
-source_file="res://bo-font-thu-phap-cuc-dep-cho-thiet-ke/TMC-Ong Do.TTF"
-dest_files=["res://.godot/imported/TMC-Ong Do.TTF-3a2eddb439061c1cb97ea89ea3565019.fontdata"]
+source_file="res://font/TMC-Ong Do.TTF"
+dest_files=["res://.godot/imported/TMC-Ong Do.TTF-1df53aa222b308be6d6bbee0e81deaa7.fontdata"]
 
 [params]
 

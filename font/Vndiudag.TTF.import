@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://do3t4fcjukgoh"
-path="res://.godot/imported/Vndiudag.TTF-b1b957e6622d00321a3b01c3fdbdd768.fontdata"
+path="res://.godot/imported/Vndiudag.TTF-3e7773f7f2b9a726765ba21246d7c7e6.fontdata"
 
 [deps]
 
-source_file="res://bo-font-thu-phap-cuc-dep-cho-thiet-ke/Vndiudag.TTF"
-dest_files=["res://.godot/imported/Vndiudag.TTF-b1b957e6622d00321a3b01c3fdbdd768.fontdata"]
+source_file="res://font/Vndiudag.TTF"
+dest_files=["res://.godot/imported/Vndiudag.TTF-3e7773f7f2b9a726765ba21246d7c7e6.fontdata"]
 
 [params]
 

@@ -112,3 +112,72 @@ func quay_gacha_ruong():
 			return mon_do["ten"] # Trả về tên món đồ để hiện lên màn hình
 	
 	return "Rương Trống"
+	
+	# Đường dẫn tạo file save trong ổ đĩa hệ thống (AppData)
+var save_path = "user://huyetsuviet_save.save"
+
+# HÀM LƯU GAME (SAVE)
+func save_game():
+	# Gom toàn bộ dữ liệu quan trọng vào một cuốn sổ (Dictionary)
+	var data_to_save = {
+		"hp": player_hp,
+		"max_hp": max_hp,
+		"level": player_level,
+		"exp": player_exp,
+		"next_exp": exp_to_next_level,
+		"sp": diem_ky_nang,
+		"bonus_dmg": bonus_damage,
+		"gold": vang,
+		"weapon": kho_vu_khi,
+		"item": kho_vat_pham,
+		"eq_weapon": trang_bi_vu_khi,
+		"eq_armor": trang_bi_ao_giap,
+		"eq_acc": trang_bi_day_chuyen,
+		"quest": danh_sach_nhiem_vu,
+		
+		# Kỹ năng
+		"s_tocdanh": skill_tang_toc_danh,
+		"s_songkiem": skill_song_kiem,
+		"s_haokhi": skill_hao_khi
+	}
+	
+	# Mở ổ cứng ra và ghi đè vào
+	var file = FileAccess.open(save_path, FileAccess.WRITE)
+	file.store_var(data_to_save)
+	file.close()
+	print("=> ĐÃ LƯU GAME THÀNH CÔNG VÀO Ổ ĐĨA!")
+
+# HÀM TẢI GAME (LOAD)
+func load_game():
+	# Kiểm tra xem máy tính này đã từng có file save chưa
+	if not FileAccess.file_exists(save_path):
+		print("=> CHƯA CÓ FILE SAVE. Chơi game mới!")
+		return false
+		
+	# Nếu có thì mở ra đọc
+	var file = FileAccess.open(save_path, FileAccess.READ)
+	var loaded_data = file.get_var()
+	file.close()
+	
+	# Đổ dữ liệu từ ổ cứng ngược lại vào "Bộ não"
+	player_hp = loaded_data["hp"]
+	max_hp = loaded_data["max_hp"]
+	player_level = loaded_data["level"]
+	player_exp = loaded_data["exp"]
+	exp_to_next_level = loaded_data["next_exp"]
+	diem_ky_nang = loaded_data["sp"]
+	bonus_damage = loaded_data["bonus_dmg"]
+	vang = loaded_data["gold"]
+	kho_vu_khi = loaded_data["weapon"]
+	kho_vat_pham = loaded_data["item"]
+	trang_bi_vu_khi = loaded_data["eq_weapon"]
+	trang_bi_ao_giap = loaded_data["eq_armor"]
+	trang_bi_day_chuyen = loaded_data["eq_acc"]
+	danh_sach_nhiem_vu = loaded_data["quest"]
+	
+	skill_tang_toc_danh = loaded_data["s_tocdanh"]
+	skill_song_kiem = loaded_data["s_songkiem"]
+	skill_hao_khi = loaded_data["s_haokhi"]
+	
+	print("=> ĐÃ TẢI GAME CŨ THÀNH CÔNG!")
+	return true

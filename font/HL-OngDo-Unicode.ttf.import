@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://d1j1u8sx2luel"
-path="res://.godot/imported/HL-OngDo-Unicode.ttf-4a274c3a6a7097b1efcd1c027fce094f.fontdata"
+path="res://.godot/imported/HL-OngDo-Unicode.ttf-779cf6bd6cb8fc87240dff4168ee2d06.fontdata"
 
 [deps]
 
-source_file="res://bo-font-thu-phap-cuc-dep-cho-thiet-ke/HL-OngDo-Unicode.ttf"
-dest_files=["res://.godot/imported/HL-OngDo-Unicode.ttf-4a274c3a6a7097b1efcd1c027fce094f.fontdata"]
+source_file="res://font/HL-OngDo-Unicode.ttf"
+dest_files=["res://.godot/imported/HL-OngDo-Unicode.ttf-779cf6bd6cb8fc87240dff4168ee2d06.fontdata"]
 
 [params]
 

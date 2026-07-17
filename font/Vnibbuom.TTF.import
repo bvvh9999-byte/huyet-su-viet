@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://dxw1t2dgcqfsr"
-path="res://.godot/imported/Vnibbuom.TTF-37b4a6538f261212ef93f96a9b604bf9.fontdata"
+path="res://.godot/imported/Vnibbuom.TTF-ad873a7ebaa4d224f42d2feb3e080d2b.fontdata"
 
 [deps]
 
-source_file="res://bo-font-thu-phap-cuc-dep-cho-thiet-ke/Vnibbuom.TTF"
-dest_files=["res://.godot/imported/Vnibbuom.TTF-37b4a6538f261212ef93f96a9b604bf9.fontdata"]
+source_file="res://font/Vnibbuom.TTF"
+dest_files=["res://.godot/imported/Vnibbuom.TTF-ad873a7ebaa4d224f42d2feb3e080d2b.fontdata"]
 
 [params]
 

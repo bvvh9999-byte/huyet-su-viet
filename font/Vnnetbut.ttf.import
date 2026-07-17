@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://dxg7sn46jjbyo"
-path="res://.godot/imported/Vnnetbut.ttf-a9d75284c7836bb1a4fa700a9871a384.fontdata"
+path="res://.godot/imported/Vnnetbut.ttf-45914f3d159eb2dbc59443078c54aad1.fontdata"
 
 [deps]
 
-source_file="res://bo-font-thu-phap-cuc-dep-cho-thiet-ke/Vnnetbut.ttf"
-dest_files=["res://.godot/imported/Vnnetbut.ttf-a9d75284c7836bb1a4fa700a9871a384.fontdata"]
+source_file="res://font/Vnnetbut.ttf"
+dest_files=["res://.godot/imported/Vnnetbut.ttf-45914f3d159eb2dbc59443078c54aad1.fontdata"]
 
 [params]
 

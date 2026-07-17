@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://dk5juf4wp7b2x"
-path="res://.godot/imported/HL-thufap1-Unicode.ttf-b521b97f7523f0ddc572083850617794.fontdata"
+path="res://.godot/imported/HL-thufap1-Unicode.ttf-20d450efcefef3b9ec1a1f27ce865c27.fontdata"
 
 [deps]
 
-source_file="res://bo-font-thu-phap-cuc-dep-cho-thiet-ke/HL-thufap1-Unicode.ttf"
-dest_files=["res://.godot/imported/HL-thufap1-Unicode.ttf-b521b97f7523f0ddc572083850617794.fontdata"]
+source_file="res://font/HL-thufap1-Unicode.ttf"
+dest_files=["res://.godot/imported/HL-thufap1-Unicode.ttf-20d450efcefef3b9ec1a1f27ce865c27.fontdata"]
 
 [params]
 

@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://bmwog5kthckvo"
-path="res://.godot/imported/VNI-Ong do.ttf-34b80facbb2bddbce9458e11ccf2da9f.fontdata"
+path="res://.godot/imported/VNI-Ong do.ttf-f5a07fca6891741c5c652e3b549fe58f.fontdata"
 
 [deps]
 
-source_file="res://bo-font-thu-phap-cuc-dep-cho-thiet-ke/VNI-Ong do.ttf"
-dest_files=["res://.godot/imported/VNI-Ong do.ttf-34b80facbb2bddbce9458e11ccf2da9f.fontdata"]
+source_file="res://font/VNI-Ong do.ttf"
+dest_files=["res://.godot/imported/VNI-Ong do.ttf-f5a07fca6891741c5c652e3b549fe58f.fontdata"]
 
 [params]
 

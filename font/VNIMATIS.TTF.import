@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://dljcj3j3p0r6w"
-path="res://.godot/imported/VNIMATIS.TTF-c9c2fd8a0fa4afe12cd150baa76f0dfd.fontdata"
+path="res://.godot/imported/VNIMATIS.TTF-382eae2c56d725f0c2ea316339ace95c.fontdata"
 
 [deps]
 
-source_file="res://bo-font-thu-phap-cuc-dep-cho-thiet-ke/VNIMATIS.TTF"
-dest_files=["res://.godot/imported/VNIMATIS.TTF-c9c2fd8a0fa4afe12cd150baa76f0dfd.fontdata"]
+source_file="res://font/VNIMATIS.TTF"
+dest_files=["res://.godot/imported/VNIMATIS.TTF-382eae2c56d725f0c2ea316339ace95c.fontdata"]
 
 [params]
 
