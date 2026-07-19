@@ -1,15 +1,13 @@
 extends CharacterBody2D
 
 var hp = 30 
-var speed = 70.0 
 var player = null 
 var can_shoot = true 
 
-# Đảm bảo đường dẫn này trỏ ĐÚNG vào file viên đạn của bạn!
 var bullet_scene = preload("res://Enemies/bullet.tscn")
 
 @onready var health_bar = $ProgressBar 
-@onready var sprite = $Sprite2D # AnimatedSprite2D
+@onready var sprite = $Sprite2D 
 @onready var detection_area = $DetectionArea
 @onready var shoot_timer = $ShootTimer
 
@@ -26,25 +24,25 @@ func _ready():
 		shoot_timer.timeout.connect(_on_shoot_timer_timeout)
 
 func _physics_process(delta):
+	# Nếu chết -> Chỉ rớt tự do
+	if hp <= 0:
+		if not is_on_floor(): velocity += get_gravity() * delta
+		move_and_slide()
+		return
+		
 	if not is_on_floor(): velocity += get_gravity() * delta
+	velocity.x = 0
 		
 	if player != null: 
-		var distance = global_position.distance_to(player.global_position)
 		var direction = (player.global_position - global_position).normalized()
-		
 		sprite.flip_h = direction.x < 0
 			
-		if distance > 200:
-			velocity.x = 0
-			if sprite != null and sprite.animation != "attack": sprite.play("idle")
-			if can_shoot: shoot(direction)
+		if can_shoot: 
+			shoot(direction)
 		else:
-			velocity.x = -direction.x * speed 
-			if sprite != null: sprite.play("run") # Ảnh đi lùi
+			if sprite != null and sprite.animation != "attack": sprite.play("idle")
 	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
-		if sprite != null and sprite.animation != "attack" and sprite.animation != "die":
-			sprite.play("idle")
+		if sprite != null and sprite.animation != "attack": sprite.play("idle")
 
 	move_and_slide()
 
@@ -67,8 +65,12 @@ func _on_shoot_timer_timeout(): can_shoot = true
 func _on_detection_entered(body): if body.name == "Player": player = body
 func _on_detection_exited(body): if body.name == "Player": player = null
 
-# --- KHI BỊ CHÉM VÀ CHẾT ---
+# ==========================================
+# CHỊU ĐÒN VÀ CHẾT (XÁC RƠI TỰ DO & MỜ DẦN)
+# ==========================================
 func take_damage(damage_amount):
+	if hp <= 0: return 
+	
 	hp -= damage_amount 
 	health_bar.value = hp 
 	
@@ -77,10 +79,17 @@ func take_damage(damage_amount):
 	sprite.modulate = Color(1, 1, 1) 
 	
 	if hp <= 0:
+		remove_from_group("Enemy") 
+		$CollisionShape2D.set_deferred("disabled", true) 
+		
+		can_shoot = false
+		player = null
+		velocity.x = 0 
+		if sprite != null: sprite.stop() 
+		
 		var player_chinh = get_tree().current_scene.get_node_or_null("Player")
-		if player_chinh != null:
-			if player_chinh.has_method("gain_exp"):
-				player_chinh.gain_exp(50)
+		if player_chinh != null and player_chinh.has_method("gain_exp"):
+			player_chinh.gain_exp(50)
 				
 		var nhiem_vu_dang_lam = ""
 		if Global.danh_sach_nhiem_vu["main_01"]["trang_thai"] == 1: nhiem_vu_dang_lam = "main_01"
@@ -100,7 +109,8 @@ func take_damage(damage_amount):
 			may_phat.play()
 			may_phat.finished.connect(may_phat.queue_free)
 			
-		if sprite != null: sprite.play("die")
-		$CollisionShape2D.set_deferred("disabled", true)
+		var tween = create_tween()
+		tween.tween_property(sprite, "modulate:a", 0.0, 1.0)
+		
 		await get_tree().create_timer(1.0).timeout
 		queue_free()

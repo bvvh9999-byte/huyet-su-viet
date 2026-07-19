@@ -101,7 +101,7 @@ bg_color = Color(0.6, 0, 0, 1)
 radius = 253.07114
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qi2p4"]
-size = Vector2(183, 20)
+size = Vector2(110, 20)
 
 [node name="Enemy" type="CharacterBody2D" unique_id=2053603259]
 z_index = 10
@@ -141,7 +141,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=784892454]
-position = Vector2(157.5, -1)
+position = Vector2(121, -1)
 shape = SubResource("RectangleShape2D_qi2p4")
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=2057787483]

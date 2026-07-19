@@ -2,19 +2,69 @@
 
 [ext_resource type="Script" uid="uid://blby7jkjrmr0q" path="res://Scripts/split_enemy.gd" id="1_ava1s"]
 [ext_resource type="Texture2D" uid="uid://c2jw3lcvgexmf" path="res://Assets/mini boss idle (1).png" id="2_ava1s"]
+[ext_resource type="Texture2D" uid="uid://58niiwiksj45" path="res://Assets/split attack 2.png" id="2_wj4op"]
+[ext_resource type="Texture2D" uid="uid://cf42lveslgi27" path="res://Assets/split attack 3.png" id="3_jci05"]
+[ext_resource type="Texture2D" uid="uid://duxatb28yfqkn" path="res://Assets/split attack 4.png" id="4_wfvei"]
+[ext_resource type="Texture2D" uid="uid://btbpi7faqys0l" path="res://Assets/split attack 5.png" id="5_3cl0q"]
+[ext_resource type="Texture2D" uid="uid://b0o2i06pjrgvd" path="res://Assets/split run.png" id="7_jci05"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4c4v"]
+atlas = ExtResource("2_wj4op")
+region = Rect2(210, 0, 210, 280)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjrvx"]
+atlas = ExtResource("3_jci05")
+region = Rect2(420, 0, 210, 280)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_415gt"]
+atlas = ExtResource("4_wfvei")
+region = Rect2(651, 0, 217, 280)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvmrx"]
+atlas = ExtResource("5_3cl0q")
+region = Rect2(868, 0, 217, 280)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p1cvx"]
 atlas = ExtResource("2_ava1s")
 region = Rect2(0, 0, 421, 280)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfvei"]
+atlas = ExtResource("7_jci05")
+region = Rect2(0, 0, 421, 424)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_1vivr"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f4c4v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjrvx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_415gt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hvmrx")
+}],
+"loop": 1,
+"name": &"attack",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_p1cvx")
 }],
 "loop": 1,
 "name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wfvei")
+}],
+"loop": 1,
+"name": &"run",
 "speed": 5.0
 }]
 
@@ -36,10 +86,10 @@ collision_layer = 4
 script = ExtResource("1_ava1s")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=725578916]
-position = Vector2(27.000004, 12.333329)
-scale = Vector2(0.46080765, 0.7642857)
+position = Vector2(27.000004, 10.000002)
+scale = Vector2(0.46080765, 0.5031447)
 sprite_frames = SubResource("SpriteFrames_1vivr")
-animation = &"idle"
+animation = &"run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1361683223]
 position = Vector2(27.666668, 10)

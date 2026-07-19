@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://fsh0afiw6bl1" path="res://Scripts/ranged_enemy.gd" id="1_klqil"]
 [ext_resource type="Texture2D" uid="uid://8v4e52uwkna4" path="res://Assets/ranged attack 1.png" id="2_ius0x"]
 [ext_resource type="Texture2D" uid="uid://cu3miko2mdm3n" path="res://Assets/ranged enemy idle.png" id="2_klqil"]
+[ext_resource type="Texture2D" uid="uid://bnb5qstjah8vd" path="res://Assets/ranged run 1 (1).png" id="4_hyijr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hyijr"]
 atlas = ExtResource("2_ius0x")
@@ -28,6 +29,14 @@ animations = [{
 }],
 "loop": 1,
 "name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_hyijr")
+}],
+"loop": 1,
+"name": &"run",
 "speed": 5.0
 }]
 

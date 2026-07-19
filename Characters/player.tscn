@@ -127,7 +127,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"run",
-"speed": 12.0
+"speed": 14.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqtel"]
@@ -146,11 +146,11 @@ collision_layer = 2
 script = ExtResource("1_onrkg")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1359831875]
-position = Vector2(-1.5000002, 11.999998)
-scale = Vector2(0.5256917, 0.5220339)
+position = Vector2(-1.5000002, 11.285694)
+scale = Vector2(0.5256917, 0.53365624)
 sprite_frames = SubResource("SpriteFrames_y0e2x")
 animation = &"idle"
-frame_progress = 0.30538252
+frame_progress = 0.14554897
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=437195861]
 position = Vector2(-0.5, -1.5)
