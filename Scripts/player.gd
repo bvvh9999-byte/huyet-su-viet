@@ -1,8 +1,5 @@
 extends CharacterBody2D
 
-# ==========================================
-# THÔNG SỐ CƠ BẢN
-# ==========================================
 @export var SPEED = 200.0
 @export var JUMP_VELOCITY = -800.0
 @export var DASH_SPEED = 600.0
@@ -11,9 +8,6 @@ var is_dashing = false
 var is_attacking = false
 var facing_right = true
 
-# ==========================================
-# KẾT NỐI NODE CƠ THỂ
-# ==========================================
 @onready var sprite = $Sprite2D
 @onready var dash_timer = $DashTimer
 @onready var sword_hitbox = $SwordHitbox
@@ -21,16 +15,11 @@ var facing_right = true
 @onready var sound_chop = $SoundChop 
 @onready var sound_die = $SoundDie
 
-# ==========================================
-# KẾT NỐI GIAO DIỆN (UI) MÀN HÌNH CHÍNH
-# ==========================================
-# (Dùng get_node_or_null để nếu bạn lỡ xóa thì game không bị Crash)
 @onready var health_bar = get_node_or_null("CanvasLayer/HealthBar")
 @onready var exp_bar = get_node_or_null("CanvasLayer/ExpBar")
 @onready var quest_tracker = get_node_or_null("CanvasLayer/QuestTracker")
 @onready var skill_bar = get_node_or_null("CanvasLayer/SkillBar")
 
-# Tải sẵn các màn hình chức năng
 var game_over_scene = preload("res://UI/game_over_screen.tscn")
 var level_up_scene = preload("res://UI/level_up_screen.tscn")
 var profile_scene = preload("res://UI/profile_screen.tscn")
@@ -47,7 +36,6 @@ func _ready():
 	
 	sword_hitbox.monitoring = false
 	
-	# --- CẬP NHẬT LIÊN TỤC THANH MÁU VÀ EXP LÊN MÀN HÌNH ---
 	if health_bar != null:
 		health_bar.max_value = Global.max_hp
 		health_bar.value = Global.player_hp
@@ -55,9 +43,7 @@ func _ready():
 	if exp_bar != null:
 		exp_bar.max_value = Global.exp_to_next_level
 		exp_bar.value = Global.player_exp
-# ==========================================
-# BẮT BÀN PHÍM (MIỄN NHIỄM VỚI PAUSE)
-# ==========================================
+
 func _unhandled_input(event):
 	if event.is_action_pressed("open_profile"):
 		if profile_instance == null:
@@ -81,9 +67,6 @@ func _unhandled_input(event):
 			skill_tree_instance = null
 			get_tree().paused = false 
 
-# ==========================================
-# HỆ THỐNG VẬT LÝ VÀ CHẠY NHẢY 
-# ==========================================
 func _physics_process(delta):
 	if get_tree().paused: return 
 		
@@ -129,7 +112,6 @@ func _physics_process(delta):
 
 	move_and_slide()
 	
-	# Cập nhật chữ Nhiệm Vụ 
 	if quest_tracker:
 		var hien_thi_chu = ""
 		for ma_nv in Global.danh_sach_nhiem_vu:
@@ -138,7 +120,6 @@ func _physics_process(delta):
 				hien_thi_chu += "- " + nv["ten"] + " [" + str(nv["da_lam"]) + "/" + str(nv["muc_tieu"]) + "]\n"
 		quest_tracker.text = hien_thi_chu
 		
-	# Cập nhật Icon Skill đã học
 	if skill_bar:
 		for child in skill_bar.get_children():
 			child.queue_free()
@@ -152,9 +133,6 @@ func tao_icon_skill(ten_skill):
 	lbl.modulate = Color(0, 1, 1) 
 	skill_bar.add_child(lbl)
 
-# ==========================================
-# CHIẾN ĐẤU VÀ TÁC DỤNG CỦA KỸ NĂNG
-# ==========================================
 func attack():
 	is_attacking = true
 	sprite.play("attack")
@@ -200,9 +178,6 @@ func start_dash():
 
 func _on_dash_timer_timeout(): is_dashing = false
 
-# ==========================================
-# CHỊU SÁT THƯƠNG VÀ GAME OVER
-# ==========================================
 func take_damage(amount):
 	Global.player_hp -= amount
 	if health_bar: health_bar.value = Global.player_hp
@@ -221,9 +196,6 @@ func take_damage(amount):
 			get_tree().root.add_child(game_over)
 			get_tree().paused = true 
 
-# ==========================================
-# NHẬN KINH NGHIỆM VÀ LÊN CẤP
-# ==========================================
 func gain_exp(amount):
 	Global.player_exp += amount
 	

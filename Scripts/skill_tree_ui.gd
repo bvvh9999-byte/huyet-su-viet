@@ -11,7 +11,6 @@ func _ready():
 func cap_nhat_giao_dien():
 	lbl_diem.text = "Điểm Kỹ Năng (SP): " + str(Global.diem_ky_nang)
 	
-	# Nếu đã học rồi thì vô hiệu hóa nút (cấm bấm nữa) và đổi chữ
 	if Global.skill_tang_toc_danh:
 		btn_toc_danh.text = "[ĐÃ HỌC] Tăng Tốc Đánh"
 		btn_toc_danh.disabled = true 
@@ -24,9 +23,6 @@ func cap_nhat_giao_dien():
 		btn_hao_khi.text = "[ĐÃ HỌC] Hào Khí Đông A"
 		btn_hao_khi.disabled = true
 
-# ================================
-# NÚT HỌC KỸ NĂNG
-# ================================
 func _on_btn_toc_danh_pressed():
 	if Global.diem_ky_nang >= 1:
 		Global.diem_ky_nang -= 1
@@ -35,7 +31,6 @@ func _on_btn_toc_danh_pressed():
 		cap_nhat_giao_dien()
 
 func _on_btn_song_kiem_pressed():
-	# Ép phải học Tốc Đánh rồi mới được học Song Kiếm (Đúng chuẩn Skill Tree)
 	if not Global.skill_tang_toc_danh:
 		print("=> Phải học Tốc Đánh trước!")
 		return
@@ -51,7 +46,7 @@ func _on_btn_hao_khi_pressed():
 		Global.skill_hao_khi = true
 		cap_nhat_giao_dien()
 
-# ================================
+
 func _on_btn_thoat_pressed():
 	get_tree().paused = false
 	queue_free()

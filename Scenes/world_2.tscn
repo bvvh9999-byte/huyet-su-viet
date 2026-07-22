@@ -3115,7 +3115,13 @@ position = Vector2(-1, 0)
 position = Vector2(-2180, -67)
 
 [node name="Enemy" parent="." unique_id=2053603259 instance=ExtResource("2_ia432")]
-position = Vector2(-281, -77)
+position = Vector2(-295, -37)
+
+[node name="Enemy2" parent="." unique_id=817208002 instance=ExtResource("2_ia432")]
+position = Vector2(-1354, -34)
+
+[node name="Enemy3" parent="." unique_id=170407152 instance=ExtResource("2_ia432")]
+position = Vector2(-563, -505)
 
 [node name="Platform" type="StaticBody2D" parent="." unique_id=668247387]
 
@@ -3143,7 +3149,10 @@ shape = SubResource("RectangleShape2D_ar73u")
 one_way_collision = true
 
 [node name="RangedEnemy" parent="." unique_id=953915621 instance=ExtResource("4_bvv5j")]
-position = Vector2(218, -424)
+position = Vector2(-7, -427)
+
+[node name="RangedEnemy2" parent="." unique_id=1936091065 instance=ExtResource("4_bvv5j")]
+position = Vector2(-817, -73)
 
 [node name="SpikeTrap" parent="." unique_id=495765900 instance=ExtResource("5_w60u7")]
 position = Vector2(149, -26)

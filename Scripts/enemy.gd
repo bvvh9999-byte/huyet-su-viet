@@ -24,13 +24,11 @@ func _ready():
 		attack_timer.timeout.connect(_on_attack_timer_timeout)
 
 func _physics_process(delta):
-	# Nếu máu đã hết (đang chờ biến mất) -> Khóa não, chỉ cho rớt tự do
 	if hp <= 0:
 		if not is_on_floor(): velocity += get_gravity() * delta
 		move_and_slide()
 		return
 		
-	# Trọng lực lúc còn sống
 	if not is_on_floor(): velocity += get_gravity() * delta
 		
 	if player != null and can_attack: 
@@ -72,11 +70,8 @@ func _on_attack_timer_timeout(): can_attack = true
 func _on_detection_entered(body): if body.name == "Player": player = body
 func _on_detection_exited(body): if body.name == "Player": player = null
 
-# ==========================================
-# CHỊU ĐÒN VÀ CHẾT (XÁC RƠI TỰ DO & MỜ DẦN)
-# ==========================================
 func take_damage(damage_amount):
-	if hp <= 0: return # Đã chết thì không nhận đam nữa
+	if hp <= 0: return 
 	
 	hp -= damage_amount 
 	health_bar.value = hp 
@@ -92,7 +87,7 @@ func take_damage(damage_amount):
 		can_attack = false
 		player = null
 		velocity.x = 0 
-		if sprite != null: sprite.stop() # Đóng băng hình ảnh hiện tại
+		if sprite != null: sprite.stop() 
 		
 		var player_chinh = get_tree().current_scene.get_node_or_null("Player")
 		if player_chinh != null and player_chinh.has_method("gain_exp"):
@@ -116,7 +111,6 @@ func take_damage(damage_amount):
 			may_phat.play()
 			may_phat.finished.connect(may_phat.queue_free)
 			
-		# Hiệu ứng mờ dần trong 1 giây
 		var tween = create_tween()
 		tween.tween_property(sprite, "modulate:a", 0.0, 1.0)
 		

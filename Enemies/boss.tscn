@@ -1,10 +1,25 @@
 [gd_scene format=3 uid="uid://vl2ch2ivwnxu"]
 
-[ext_resource type="Texture2D" uid="uid://cok6rypfiw0aq" path="res://icon.svg" id="1_jsado"]
 [ext_resource type="Script" uid="uid://saq62kt4nf7q" path="res://Scripts/boss.gd" id="1_mhtxu"]
+[ext_resource type="Texture2D" uid="uid://c2jw3lcvgexmf" path="res://Assets/mini boss idle (1).png" id="2_mhtxu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvlsj"]
+atlas = ExtResource("2_mhtxu")
+region = Rect2(0, 0, 252, 280)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1vivr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvlsj")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mhtxu"]
-size = Vector2(235, 210)
+size = Vector2(191, 208)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jvlsj"]
 size = Vector2(232.5, 20)
@@ -13,23 +28,17 @@ size = Vector2(232.5, 20)
 collision_layer = 4
 script = ExtResource("1_mhtxu")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2027587152]
-position = Vector2(3, -2)
-scale = Vector2(1.84375, 1.6796875)
-texture = ExtResource("1_jsado")
-
-[node name="ColorRect" type="ColorRect" parent="." unique_id=2125856401]
-offset_left = -120.0
-offset_top = -106.0
-offset_right = 119.0
-offset_bottom = 105.0
-color = Color(0.8370001, 0, 0.93, 0.39215687)
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=67566903]
+position = Vector2(4, 3)
+sprite_frames = SubResource("SpriteFrames_1vivr")
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=621811428]
-position = Vector2(0.5, -2)
+position = Vector2(33.5, 19)
 shape = SubResource("RectangleShape2D_mhtxu")
 
 [node name="AttackArea" type="Area2D" parent="." unique_id=790951896]
+position = Vector2(7, 0)
 collision_layer = 0
 collision_mask = 2
 
@@ -41,9 +50,9 @@ shape = SubResource("RectangleShape2D_jvlsj")
 one_shot = true
 
 [node name="HealthBar" type="ProgressBar" parent="." unique_id=1906852928]
-offset_left = -171.0
-offset_top = -149.0
-offset_right = 181.0
-offset_bottom = -122.0
+offset_left = -140.0
+offset_top = -135.0
+offset_right = 212.0
+offset_bottom = -108.0
 max_value = 200.0
 show_percentage = false

@@ -1,121 +1,155 @@
-extends CharacterBody2D
+extends Node
 
-var hp = 200 
-var max_hp = 200
-var speed = 70.0 # Phase 1 đi chậm rải bước
-var phase = 1 
-var is_talking = false 
+# ==========================================
+# CHỈ SỐ PLAYER CƠ BẢN
+# ==========================================
+var player_hp = 100
+var max_hp = 100
+var player_level = 1
+var player_exp = 0
+var exp_to_next_level = 100
+var bonus_damage = 0
+var toc_do = 200
+var vang = 100 # Tiền mua đồ
 
-var player = null 
-var can_attack = true 
+# ==========================================
+# TRANG BỊ & KHO ĐỒ
+# ==========================================
+var kho_vu_khi = ["Village Blade"] 
+var kho_vat_pham = ["Wooden Buckler"]
 
-@onready var health_bar = $HealthBar 
-@onready var attack_area = $AttackArea
-@onready var attack_timer = $AttackTimer
-@onready var mau_boss = $ColorRect
+var trang_bi_vu_khi = "Chưa có"
+var trang_bi_ao_giap = "Chưa có"
+var trang_bi_day_chuyen = "Chưa có"
 
-# CÁC BIẾN ĐỂ TÌM GIAO DIỆN NGOÀI MAP
-var env_modulate = null
-var dialog_box = null
-var dialog_text = null
+# ==========================================
+# HỆ THỐNG KỸ NĂNG (SKILL TREE)
+# ==========================================
+var diem_ky_nang = 0 
+var skill_tang_toc_danh = false
+var skill_song_kiem = false
+var skill_hao_khi = false
 
-func _ready():
-	health_bar.max_value = hp
-	health_bar.value = hp
+# ==========================================
+# SỔ TAY NHIỆM VỤ (QUEST LOG)
+# ==========================================
+var danh_sach_nhiem_vu = {
+	"main_01": {
+		"ten": "Khởi Nghĩa",
+		"loai": "Nhiệm Vụ Chính",
+		"trang_thai": 0, 
+		"muc_tieu": 3,
+		"da_lam": 0,
+		"phan_thuong": "Sword of Me Linh",
+		"thoai_nhan_nv": [
+			"Ngươi cuối cùng cũng tỉnh lại rồi sao, Hồn Việt?",
+			"Lũ giặc ngoại xâm đang dày xéo quê hương ta.",
+			"Hãy đi tiêu diệt 3 tên giặc ngoài kia, ta sẽ có thưởng!"
+		],
+		"thoai_dang_lam": "Chưa xong đâu! Ngươi mới diệt được ", 
+		"thoai_tra_nv": "Tuyệt vời! Nhận lấy thanh kiếm này và lên đường!",
+		"thoai_ket_thuc": "Lịch sử trông cậy cả vào ngươi..."
+	},
+	"main_02": {
+		"ten": "Hắc Hóa",
+		"loai": "Nhiệm Vụ Chính",
+		"trang_thai": 0, 
+		"muc_tieu": 5, 
+		"da_lam": 0,
+		"phan_thuong": "Storm Gauntlet",
+		"thoai_nhan_nv": [
+			"Khu rừng này tà khí quá nặng...",
+			"Giúp ta dọn dẹp 5 con quái vật quanh đây nhé!"
+		],
+		"thoai_dang_lam": "Quái vật vẫn còn, ngươi mới giết được ",
+		"thoai_tra_nv": "Làm tốt lắm. Đây là phần thưởng của ngươi!",
+		"thoai_ket_thuc": "Hãy cẩn thận với cái Rương Nguyền Rủa..."
+	}
+}
+
+# ==========================================
+# THUẬT TOÁN GACHA - BẢNG ĐỒ RỚT CHUẨN XÁC
+# ==========================================
+var bang_rot_do = [
+	# --- COMMON (50%) ---
+	{"ten": "Village Blade", "loai": "vu_khi", "rarity": "Common", "trong_so": 100},
+	{"ten": "Bronze-Edge Sword", "loai": "vu_khi", "rarity": "Common", "trong_so": 100},
+	{"ten": "Wooden Buckler", "loai": "vat_pham", "rarity": "Common", "trong_so": 100},
+	{"ten": "Leather Boots", "loai": "vat_pham", "rarity": "Common", "trong_so": 100},
 	
-	# Tìm Player
-	player = get_tree().current_scene.get_node_or_null("Player")
+	# --- RARE (30%) ---
+	{"ten": "Sword of Me Linh", "loai": "vu_khi", "rarity": "Rare", "trong_so": 30},
+	{"ten": "Militia Armour", "loai": "vat_pham", "rarity": "Rare", "trong_so": 30},
+	{"ten": "Ring of Swiftness", "loai": "vat_pham", "rarity": "Rare", "trong_so": 30},
+	{"ten": "River Spirit Amulet", "loai": "vat_pham", "rarity": "Rare", "trong_so": 30},
 	
-	# Dùng call_deferred để đợi Map load xong rồi mới đi tìm UI và gáy
-	call_deferred("khoi_dong_tran_dau")
+	# --- EPIC (10%) ---
+	{"ten": "Sword of the Trung Sisters", "loai": "vu_khi", "rarity": "Epic", "trong_so": 10},
+	{"ten": "Bach Dang Naval Armour", "loai": "vat_pham", "rarity": "Epic", "trong_so": 10},
+	{"ten": "Storm Gauntlet", "loai": "vat_pham", "rarity": "Epic", "trong_so": 10},
+	
+	# --- LEGENDARY SSR (2%) ---
+	{"ten": "Blade of Viet Soul", "loai": "vu_khi", "rarity": "SSR", "trong_so": 2},
+	{"ten": "Ancestral Guardian Plate", "loai": "vat_pham", "rarity": "SSR", "trong_so": 2},
+	{"ten": "Amulet of Eternal Memory", "loai": "vat_pham", "rarity": "SSR", "trong_so": 2}
+]
 
-func khoi_dong_tran_dau():
-	# Đi tìm hiệu ứng phòng và hộp thoại (bạn phải tạo ở BossWorld thì nó mới thấy)
-	env_modulate = get_tree().current_scene.get_node_or_null("CanvasModulate")
-	dialog_box = get_tree().current_scene.get_node_or_null("UILayer/DialogBox")
-	if dialog_box:
-		dialog_text = dialog_box.get_node_or_null("DialogText")
+func quay_gacha_ruong():
+	var tong_trong_so = 0
+	for mon_do in bang_rot_do:
+		tong_trong_so += mon_do["trong_so"]
 		
-	boss_noi_chuyen("Kẻ vô danh kia! Khá khen cho ngươi lọt được vào đây!\nHãy để lại mạng sống!")
+	var so_random = randi() % tong_trong_so
+	var tich_luy = 0
+	
+	for mon_do in bang_rot_do:
+		tich_luy += mon_do["trong_so"]
+		if so_random < tich_luy:
+			if mon_do["loai"] == "vu_khi":
+				kho_vu_khi.append(mon_do["ten"])
+			else:
+				kho_vat_pham.append(mon_do["ten"])
+			return mon_do # Trả về toàn bộ thông tin món đồ
+	return null
 
 # ==========================================
-# CƠ CHẾ NÓI CHUYỆN (TẠM DỪNG GAME)
+# HỆ THỐNG LƯU TRỮ (SAVE / LOAD)
 # ==========================================
-func boss_noi_chuyen(cau_noi):
-	is_talking = true
-	get_tree().paused = true # Dừng thế giới lại
-	if dialog_box and dialog_text:
-		dialog_box.visible = true
-		dialog_text.text = "BÓNG ĐEN LỊCH SỬ:\n" + cau_noi
+var save_path = "user://huyetsuviet_save.save"
 
-func _unhandled_input(event):
-	# Nếu đang nói mà Player bấm E -> Tắt thoại, đánh tiếp!
-	if is_talking and event.is_action_pressed("interact"):
-		if dialog_box: dialog_box.visible = false
-		is_talking = false
-		get_tree().paused = false 
-		
-		if hp <= 0:
-			queue_free() # Tắt thoại trăng trối xong thì biến mất
-		elif phase == 2:
-			kich_hoat_phase_2()
+func save_game():
+	var data_to_save = {
+		"hp": player_hp, "max_hp": max_hp, "level": player_level, "exp": player_exp,
+		"next_exp": exp_to_next_level, "sp": diem_ky_nang, "bonus_dmg": bonus_damage, "gold": vang,
+		"weapon": kho_vu_khi, "item": kho_vat_pham, "eq_weapon": trang_bi_vu_khi,
+		"eq_armor": trang_bi_ao_giap, "eq_acc": trang_bi_day_chuyen, "quest": danh_sach_nhiem_vu,
+		"s_tocdanh": skill_tang_toc_danh, "s_songkiem": skill_song_kiem, "s_haokhi": skill_hao_khi
+	}
+	var file = FileAccess.open(save_path, FileAccess.WRITE)
+	file.store_var(data_to_save)
+	file.close()
 
-# ==========================================
-# CƠ CHẾ CHỊU ĐÒN VÀ CHUYỂN PHASE
-# ==========================================
-func take_damage(amount):
-	if is_talking: return # Đang gáy thì cấm chém lén!
+func load_game():
+	if not FileAccess.file_exists(save_path): return false
+	var file = FileAccess.open(save_path, FileAccess.READ)
+	var loaded_data = file.get_var()
+	file.close()
 	
-	hp -= amount
-	health_bar.value = hp
-	
-	mau_boss.color = Color(1, 1, 1) # Nháy trắng
-	await get_tree().create_timer(0.1).timeout
-	if phase == 1: mau_boss.color = Color(0.2, 0, 0.4) # Trở lại Tím Đen
-	else: mau_boss.color = Color(1, 0, 0) # Trở lại Đỏ Rực
-	
-	# CHUYỂN PHASE KHI MÁU XUỐNG DƯỚI 50%
-	if hp <= max_hp / 2 and phase == 1:
-		phase = 2
-		boss_noi_chuyen("NGƯƠI LÀM TA NỔI GIẬN RỒI!\nHÃY NẾM MÙI ĐỊA NGỤC ĐI!!!")
-		
-	if hp <= 0:
-		boss_noi_chuyen("Không thể nào... Lịch sử không thể thay đổi...\nAAAAAAAAA!!!")
-
-func kich_hoat_phase_2():
-	# Đổi màu cả phòng sang ĐỎ RỰC
-	if env_modulate: env_modulate.color = Color(0.8, 0.2, 0.2)
-	
-	# Boss hóa khổng lồ và chạy nhanh hơn
-	scale = Vector2(1.5, 1.5)
-	mau_boss.color = Color(1, 0, 0) # Đổi da thành màu Đỏ
-	speed = 180.0
-
-# ==========================================
-# AI RƯỢT ĐUỔI VÀ TẤN CÔNG
-# ==========================================
-func _physics_process(delta):
-	if get_tree().paused or is_talking: return 
-	
-	if not is_on_floor(): velocity += get_gravity() * delta
-	
-	if player != null:
-		var direction = (player.global_position - global_position).normalized()
-		velocity.x = direction.x * speed
-		
-		# Căn chỉnh mồm
-		if direction.x > 0: attack_area.scale.x = 1
-		elif direction.x < 0: attack_area.scale.x = -1
-			
-		if can_attack:
-			var bodies = attack_area.get_overlapping_bodies()
-			for b in bodies:
-				if b.name == "Player" and b.has_method("take_damage"):
-					var dam = 15 if phase == 1 else 35 # Phase 2 cắn cực thấu xương!
-					b.take_damage(dam)
-					can_attack = false
-					attack_timer.start()
-	move_and_slide()
-
-func _on_attack_timer_timeout(): 
-	can_attack = true
+	player_hp = loaded_data["hp"]
+	max_hp = loaded_data["max_hp"]
+	player_level = loaded_data["level"]
+	player_exp = loaded_data["exp"]
+	exp_to_next_level = loaded_data["next_exp"]
+	diem_ky_nang = loaded_data["sp"]
+	bonus_damage = loaded_data["bonus_dmg"]
+	vang = loaded_data["gold"]
+	kho_vu_khi = loaded_data["weapon"]
+	kho_vat_pham = loaded_data["item"]
+	trang_bi_vu_khi = loaded_data["eq_weapon"]
+	trang_bi_ao_giap = loaded_data["eq_armor"]
+	trang_bi_day_chuyen = loaded_data["eq_acc"]
+	danh_sach_nhiem_vu = loaded_data["quest"]
+	skill_tang_toc_danh = loaded_data["s_tocdanh"]
+	skill_song_kiem = loaded_data["s_songkiem"]
+	skill_hao_khi = loaded_data["s_haokhi"]
+	return true

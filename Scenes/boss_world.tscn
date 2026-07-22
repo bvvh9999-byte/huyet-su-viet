@@ -3080,7 +3080,7 @@ shape = SubResource("RectangleShape2D_vat2a")
 position = Vector2(11, -64)
 
 [node name="Boss" parent="Ground" unique_id=1163727577 instance=ExtResource("2_vat2a")]
-position = Vector2(473, -101)
+position = Vector2(463, -194)
 
 [node name="UILayer" type="CanvasLayer" parent="." unique_id=522345630]
 
@@ -3108,6 +3108,7 @@ motion_scale = Vector2(0.3, 0.3)
 motion_mirroring = Vector2(1536, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=1699576318]
-position = Vector2(5, -386)
+position = Vector2(-1, -388)
+rotation = 0.02385763
 texture = ExtResource("4_bclhl")
 centered = false
