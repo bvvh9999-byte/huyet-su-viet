@@ -53,6 +53,5 @@ autowrap_mode = 2
 [node name="TextTimer" type="Timer" parent="." unique_id=40626328]
 wait_time = 0.05
 
-[node name="BGM_Intro" type="AudioStreamPlayer" parent="." unique_id=658768949]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=658768949]
 stream = ExtResource("3_im456")
-autoplay = true

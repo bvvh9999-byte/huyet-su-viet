@@ -765,6 +765,14 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_pj4o1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_pj4o1")
 text = "CHƠI TIẾP"
 
+[node name="BtnTutorial" type="Button" parent="VBoxContainer" unique_id=1620552386]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_pj4o1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pj4o1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pj4o1")
+text = "HƯỚNG DẪN"
+
 [node name="BtnQuit" type="Button" parent="VBoxContainer" unique_id=548879522]
 unique_name_in_owner = true
 layout_mode = 2
@@ -775,4 +783,5 @@ text = "THOÁT TRÒ CHƠI"
 
 [connection signal="pressed" from="VBoxContainer/BtnPlay" to="." method="_on_btn_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/BtnLoad" to="." method="_on_btn_load_pressed"]
+[connection signal="pressed" from="VBoxContainer/BtnTutorial" to="." method="_on_btn_tutorial_pressed"]
 [connection signal="pressed" from="VBoxContainer/BtnQuit" to="." method="_on_btn_quit_pressed"]
