@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dfyvqn63mhcbr"
+path="res://.godot/imported/Chiến Hịch Hai Bà Trưng.mp3-18c37a66ae4269cebc4a5039ce620223.mp3str"
+
+[deps]
+
+source_file="res://Assets/Chiến Hịch Hai Bà Trưng.mp3"
+dest_files=["res://.godot/imported/Chiến Hịch Hai Bà Trưng.mp3-18c37a66ae4269cebc4a5039ce620223.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

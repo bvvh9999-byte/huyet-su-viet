@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cp50iqy3lsura" path="res://Scripts/prologue_screen.gd" id="1_mymen"]
 [ext_resource type="Texture2D" uid="uid://b4q4a6n0mblwy" path="res://Assets/background.png" id="2_im456"]
+[ext_resource type="AudioStream" uid="uid://dfyvqn63mhcbr" path="res://Assets/Chiến Hịch Hai Bà Trưng.mp3" id="3_im456"]
 
 [node name="PrologueScreen" type="Control" unique_id=1059480754]
 layout_mode = 3
@@ -51,3 +52,7 @@ autowrap_mode = 2
 
 [node name="TextTimer" type="Timer" parent="." unique_id=40626328]
 wait_time = 0.05
+
+[node name="BGM_Intro" type="AudioStreamPlayer" parent="." unique_id=658768949]
+stream = ExtResource("3_im456")
+autoplay = true
