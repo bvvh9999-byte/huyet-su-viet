@@ -66,7 +66,7 @@ func _on_detection_entered(body): if body.name == "Player": player = body
 func _on_detection_exited(body): if body.name == "Player": player = null
 
 # ==========================================
-# CHỊU ĐÒN VÀ CHẾT (XÁC RƠI TỰ DO & MỜ DẦN)
+# CHỊU SÁT THƯƠNG VÀ CHẾT (ĐÃ XÓA LỖI "DIE")
 # ==========================================
 func take_damage(damage_amount):
 	if hp <= 0: return 
@@ -110,7 +110,7 @@ func take_damage(damage_amount):
 			may_phat.finished.connect(may_phat.queue_free)
 			
 		var tween = create_tween()
-		tween.tween_property(sprite, "modulate:a", 0.0, 1.0)
+		tween.tween_property(sprite, "modulate:a", 0.0, 0.5)
 		
-		await get_tree().create_timer(1.0).timeout
+		await get_tree().create_timer(0.5).timeout
 		queue_free()

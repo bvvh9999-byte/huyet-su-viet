@@ -55,3 +55,4 @@ wait_time = 0.05
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=658768949]
 stream = ExtResource("3_im456")
+autoplay = true
