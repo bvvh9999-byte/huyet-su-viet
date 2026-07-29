@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://c4r5n8u6f3epp" path="res://Scripts/level_up_screen.gd" id="1_4wurp"]
 [ext_resource type="Texture2D" uid="uid://beduq0n2kdes0" path="res://Assets/levelup.png" id="2_x353h"]
-[ext_resource type="FontFile" uid="uid://d16xwi6nhgcyy" path="res://bo-font-thu-phap-cuc-dep-cho-thiet-ke/VNI_THUPHAP.TTF" id="3_v45y7"]
 
 [node name="LevelUpScreen" type="CanvasLayer" unique_id=1685285447]
 process_mode = 3
@@ -17,28 +16,26 @@ grow_vertical = 2
 texture = ExtResource("2_x353h")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="." unique_id=1584437787]
-offset_left = 482.0
-offset_top = 165.0
-offset_right = 749.0
-offset_bottom = 249.0
-theme_override_fonts/font = ExtResource("3_v45y7")
-theme_override_font_sizes/font_size = 40
-text = "Upgrade Skill"
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=53655298]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -182.0
+offset_top = -33.0
+offset_right = 173.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Button" type="Button" parent="." unique_id=878783366]
-offset_left = 429.0
-offset_top = 335.0
-offset_right = 749.0
-offset_bottom = 440.0
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=878783366]
+layout_mode = 2
 text = "+10 SÁT THƯƠNG KIẾM"
 
-[node name="Button2" type="Button" parent="." unique_id=263665185]
-offset_left = 436.0
-offset_top = 488.0
-offset_right = 750.0
-offset_bottom = 586.0
+[node name="Button2" type="Button" parent="VBoxContainer" unique_id=263665185]
+layout_mode = 2
 text = "+50 MÁU TỐI ĐA"
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
